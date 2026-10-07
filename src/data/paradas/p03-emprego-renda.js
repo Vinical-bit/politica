@@ -66,12 +66,12 @@ export default {
     {
       id: 'p03-vagas',
       rotulo: 'Vagas com carteira criadas',
-      valor: '5,37 milhões, até meados de 2026',
-      selo: 'pendente',
-      ressalva: null, pendencia: 'O vídeo fala em "até o meio deste ano", mas o gráfico rotula "2023–2025".',
+      valor: 'Cerca de 5,6 milhões, de jan/2023 a ago/2026',
+      selo: 'verificado',
+      ressalva: null,
       saibaMais:
-        'No Caged (saldo de admissões menos demissões), foram 4,94 milhões de jan/2023 a out/2025, e o total passou de 5 milhões desde 2023 até mar/2026. O link leva ao anúncio oficial dos 5 milhões.',
-      fonte: esp('Secom/MTE, Caged: 5 milhões de vagas desde 2023', URLS.cagedCincoMilhoes),
+        'Saldo do Caged (admissões menos demissões) somado ano a ano, como divulgado: 2023: 1,48 milhão; 2024: 1,69 milhão; 2025: 1,28 milhão; jan–ago/2026: 1,13 milhão. O ministério revisa os números depois, então o total pode mudar um pouco.',
+      fonte: esp('Agência Gov, Novo Caged de agosto de 2026', URLS.cagedAgo2026),
     },
     {
       id: 'p03-ocupada',
@@ -159,13 +159,13 @@ export default {
     },
     {
       id: 'p03-minimo-real',
-      rotulo: 'Poder de compra do salário mínimo',
-      valor: '+15%',
-      selo: 'pendente',
-      ressalva: null, pendencia: 'Depende da base: cerca de 10% a partir de jan/2023 ou cerca de 18% a partir de 2022.',
+      rotulo: 'Poder de compra do salário mínimo desde 2023',
+      valor: '+10% acima da inflação (R$ 1.302 → R$ 1.621)',
+      selo: 'verificado',
+      ressalva: null,
       saibaMais: {
         paragrafos: [
-          'O número não tem fonte única. Conta nossa com o INPC do IBGE (2023: 3,71%; 2024: 4,77%; 2025: 3,90%). Os 15% ficam entre as duas bases e só valem com a base explicada.',
+          'Conta nossa: o mínimo foi de R$ 1.302 (jan/2023) para R$ 1.621 (2026), alta de 24,5%. O INPC do IBGE somou 12,9% de 2023 a 2025 (3,71%, 4,77% e 3,90%). Descontada a inflação, o ganho real é de cerca de 10%.',
           'A política de valorização foi retomada em 2023. Desde 2025, o ganho acima da inflação fica limitado a 2,5% ao ano pelo arcabouço fiscal.',
         ],
         tabela: {

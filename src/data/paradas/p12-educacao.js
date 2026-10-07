@@ -125,12 +125,12 @@ export default {
     },
     {
       id: 'p12-bf-bpc',
-      rotulo: 'Extrema pobreza sem Bolsa Família e BPC',
+      rotulo: 'Extrema pobreza sem os programas sociais (2024)',
       valor: '10% (contra 3,5%)',
-      selo: 'pendente',
+      selo: 'verificado',
       ressalva: null,
-      saibaMais: 'Contraponto: o BPC existe desde 1993 e o Bolsa Família desde 2003 (virou Auxílio Brasil no governo anterior).',
-      fonte: video(918),
+      saibaMais: 'Simulação do IBGE: sem os benefícios de programas sociais (Bolsa Família, BPC e outros), a extrema pobreza teria sido 6,5 pontos maior. Contraponto: o BPC existe desde 1993 e o Bolsa Família desde 2003 (virou Auxílio Brasil no governo anterior).',
+      fonte: esp('IBGE, Síntese de Indicadores Sociais 2025', URLS.pobreza2024),
     },
   ],
 

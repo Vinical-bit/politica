@@ -1,5 +1,7 @@
 import { video, inst, esp, URLS } from '../fontes.js';
 
+const dividaBc = esp('Banco Central, série 13762: dívida bruta do governo geral (% do PIB)', URLS.dividaBrutaSerie);
+
 const rtn = esp('Tesouro Nacional, Resultado do Tesouro Nacional (dez/2025)', URLS.rtnDez2025);
 
 export default {
@@ -76,9 +78,9 @@ export default {
       descricao: 'Linha com a dívida bruta em 2020, 2021, 2022 e julho de 2026.',
       nota: '2022 foi um vale: a dívida tinha caído depois do pico da pandemia.',
       itens: [
-        { id: 'p10-div-2020', rotulo: 'Dívida bruta em 2020', curto: '2020', numero: 86.9, valor: '86,9%', selo: 'pendente', ressalva: null, saibaMais: null, fonte: video(704) },
-        { id: 'p10-div-2021', rotulo: 'Dívida bruta em 2021', curto: '2021', numero: 77.3, valor: '77,3%', selo: 'pendente', ressalva: null, saibaMais: null, fonte: video(704) },
-        { id: 'p10-div-2022', rotulo: 'Dívida bruta em 2022', curto: '2022', numero: 71.6, valor: '71,6%', selo: 'pendente', ressalva: null, saibaMais: null, fonte: video(704) },
+        { id: 'p10-div-2020', rotulo: 'Dívida bruta em 2020', curto: '2020', numero: 86.9, valor: '86,9%', selo: 'verificado', ressalva: null, saibaMais: 'Série revisada do Banco Central (dezembro de cada ano).', fonte: dividaBc },
+        { id: 'p10-div-2021', rotulo: 'Dívida bruta em 2021', curto: '2021', numero: 77.3, valor: '77,3%', selo: 'verificado', ressalva: null, saibaMais: 'Série revisada do Banco Central (dezembro de cada ano).', fonte: dividaBc },
+        { id: 'p10-div-2022', rotulo: 'Dívida bruta em 2022', curto: '2022', numero: 71.7, valor: '71,7%', selo: 'verificado', ressalva: null, saibaMais: 'Série revisada do Banco Central. Na divulgação original, em jan/2023, era 73,5%; o número mudou com a revisão do PIB.', fonte: dividaBc },
         { id: 'p10-div-2026', rotulo: 'Dívida bruta em jul/2026 (BC)', curto: 'jul/26', numero: 82.5, valor: '82,5%', selo: 'verificado', ressalva: null, saibaMais: null, fonte: esp('CNN Brasil, dívida bruta em julho (Banco Central)', URLS.dividaJul2026) },
       ],
     },

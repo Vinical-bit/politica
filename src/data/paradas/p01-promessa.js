@@ -39,14 +39,14 @@ export default {
     itens: [
       {
         id: 'p01-placar-inflacao',
-        rotulo: 'Inflação em 12 meses',
+        rotulo: 'Inflação em 12 meses (dez/2022 → ago/2026)',
         antes: '5,79%',
         depois: '4,22%',
         valor: '5,79% → 4,22%',
-        selo: 'pendente',
+        selo: 'verificado',
         ressalva: null,
-        saibaMais: 'O 5,79% é o IPCA de 2022 inteiro e confere com o IBGE (ver parada 2). Falta confirmar de qual mês é o 4,22%.',
-        fonte: video(),
+        saibaMais: 'IPCA acumulado em 12 meses: 5,79% em dezembro de 2022 e 4,22% em agosto de 2026, o último mês divulgado.',
+        fonte: esp('Banco Central (série 13522: IPCA em 12 meses, dados do IBGE)', URLS.ipca12m),
       },
       {
         id: 'p01-placar-desemprego',

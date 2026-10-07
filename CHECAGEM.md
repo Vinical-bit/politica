@@ -7,43 +7,32 @@ O site agora tem um único selo, **Verificado**. Todo número publicado precisa 
 2. **Achou um valor diferente:** corrija o `valor` (e o `numero`, se for gráfico) e faça o passo 1.
 3. **Não achou:** apague o dado do arquivo da parada.
 
-## Números e contas que precisam de checagem (11)
+## Pendentes (3)
 
-| Parada | Dado | No site | O que falta checar | Onde checar |
-| --- | --- | --- | --- | --- |
-| 2 | IPCA do Lula 3 | 19,73% | É projeção. Com 2026 em 4,27%, a conta dá ~19,2%; 19,73% pede 2026 ≈ 4,7%. Descobrir qual projeção o vídeo usou. | [IBGE IPCA](https://www.ibge.gov.br/explica/inflacao.php), [Focus](https://www.bcb.gov.br/publicacoes/focus) |
-| 3 | Vagas com carteira | 5,37 milhões | O total exato não foi achado. O Caged dava 4,94 mi até out/2025 e "mais de 5 mi" até mar/2026. Achar o saldo acumulado até jun/2026. | [Novo Caged](https://www.gov.br/trabalho-e-emprego/pt-br/assuntos/estatisticas-trabalho/novo-caged) |
-| 3 | Salário mínimo, poder de compra | +15% | Depende da conta. De R$ 1.212 a R$ 1.621 é +33,7% nominal. Descontando o INPC de 2023–2025 dá ~18%; incluindo 2022, ~12%; partindo de R$ 1.302, ~10%. Nenhuma base óbvia dá exatamente 15%. | [IBGE INPC](https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9258-indice-nacional-de-precos-ao-consumidor.html) |
-| 6 | Crescimento dos negativados | 27% | 27% bate com 66 mi (número do plano, 2022) → 83,9 mi. Desde jan/2023 (70,1 mi) a alta é de ~20%. Decidir a base. | [Agência Brasil](https://agenciabrasil.ebc.com.br/economia/noticia/2023-02/mais-de-70-milhoes-de-brasileiros-estao-inadimplentes-aponta-serasa) |
-| 8 | IPOs: 1 × 79 | 1 × 79 | O "79" não foi achado; a B3 fala em ~71 em 2020–21. | [B3](https://www.b3.com.br/) |
-| 8 | IPOs em 2020 | 28 | Contagem do vídeo de referência; não conferida na B3. | [B3](https://www.b3.com.br/) |
-| 8 | IPOs em 2021 | 46 | Idem. | [B3](https://www.b3.com.br/) |
-| 11 | Superávit comercial | US$ 241 bi × US$ 222 bi | Somar os saldos anuais do MDIC (2023 foi US$ 98,8 bi). | [MDIC](https://www.gov.br/mdic/pt-br/assuntos/noticias/2024/janeiro/comercio-exterior-brasileiro-bate-recordes-e-fecha-2023-com-saldo-de-us-98-8-bi) |
-| 11 | Petróleo/Ormuz (FMI) | +0,2 ponto no PIB de 2026 | É projeção do FMI, não efeito medido. Confirmar no relatório de abril/2026. | [FMI WEO](https://www.imf.org/en/Publications/WEO) |
-| 13 | Alíquota do IVA | Cerca de 28% | É estimativa; a alíquota final ainda será fixada pelo Senado. | [Fazenda](https://www.gov.br/fazenda/pt-br/acesso-a-informacao/acoes-e-programas/reforma-tributaria) |
-| 13 | Comércio e serviços | 71% dos empregos, 67,4% do PIB | É comércio + serviços juntos (MDIC). A fala diz "serviços, mais de 60%". Achar a página do MDIC. | [MDIC](https://www.gov.br/mdic/pt-br) |
+| Parada | Dado | Valor no site | O que falta |
+|---|---|---|---|
+| 8 | IPOs: Lula 3 × mandato anterior | 1 × 79 | A contagem está certa (B3: 5 + 28 + 46 + 0 = 79; Lula 3: 1, a Compass em mai/2026). Falta decidir o enquadramento: o boom de 2020–21 aconteceu com a Selic na mínima (2%), e a seca começou no fim de 2021, antes do Lula 3. |
+| 11 | Superávit comercial acumulado | US$ 241 bi × US$ 222 bi | Valores revisados do MDIC: 2019 ≈ 48,0 · 2020 ≈ 50,4 · 2021 61,4 · 2022 ≈ 61,5 (soma ≈ 221) · 2023 98,8 · 2024 74,6 · 2025 68,3 (soma ≈ 241). Compara 3 anos com 4; por ano, ≈ US$ 80 bi × ≈ US$ 55 bi. Fonte para conferir: [Comex Stat](https://comexstat.mdic.gov.br/pt/geral) e [balança comercial do MDIC](https://www.gov.br/mdic/pt-br/assuntos/comercio-exterior/estatisticas/balanca-comercial-brasileira-acumulado-do-ano). |
+| 13 | Comércio e serviços juntos | 71% dos empregos formais e 67,4% do PIB | Não achei a fonte primária. A provável é a [Agência Gov sobre a parceria MDIC/MEMP/CNC](https://agenciagov.ebc.com.br/noticias/202406/mdic-memp-e-cnc-fecham-parceria-para-impulsionar-o-setor-de-comercio-e-servicos) (bloqueada para leitura automática). |
 
-## Números que vieram só do vídeo de referência (15)
+## Resolvido em 07/10/2026 (23 números)
 
-| Parada | Dado | No site | Onde procurar |
-| --- | --- | --- | --- |
-| 1 | Inflação em 12 meses (placar) | 5,79% → 4,22% | O 5,79% confere. O 4,22% não bate com jul/2026 (4,44%); ver IPCA de ago ou set/2026 no IBGE. |
-| 4 | Subalimentação na narração | 2,4% | A FAO costuma publicar "<2,5%", sem valor exato. Ver o relatório SOFI 2025 / FAOSTAT. |
-| 4 | Primeira saída do mapa | 2014 (critério de 5%) | Matéria do Consea de 17/09/2014 exibida no vídeo (gov.br/secretariageral). |
-| 8 | IPOs em 2019 | 5 | B3 |
-| 8 | IPOs em 2024 | 0 | B3 / InfoMoney ("seca de IPOs") |
-| 8 | IPOs em 2025 | 0 | B3 / InfoMoney |
-| 8 | IPOs em 2026 (até 31/08) | 1 | B3 |
-| 10 | Dívida bruta 2020 | 86,9% | Banco Central, estatísticas fiscais (série revisada) |
-| 10 | Dívida bruta 2021 | 77,3% | Idem |
-| 10 | Dívida bruta 2022 | 71,6% | Idem. A divulgação original do BC era 73,5% (Poder360); o número mudou com a revisão do PIB. |
-| 11 | PIB per capita 2022 → 2025 | Brasil +7,9% × renda média +11,6% | Banco Mundial (data.worldbank.org), indicador "GDP per capita (constant US$)" |
-| 11 | Projeção 2026 (G1) | Emergentes do G20 ≈ 4% × Brasil ≈ 2% | Matéria do G1 exibida no vídeo; ou FMI WEO |
-| 11 | Commodities | Três anos de queda | Índice de commodities do BC (IC-Br) ou Banco Mundial (Pink Sheet) |
-| 12 | Extrema pobreza sem Bolsa Família e BPC | 10% (contra 3,5%) | IBGE, Síntese de Indicadores Sociais 2025 (simulação sem benefícios) |
-| 13 | Indústria de transformação | ~10,8% do PIB | IBGE, Contas Nacionais / CNI |
-
----
+- **Inflação em 12 meses:** 5,79% (dez/2022) → 4,22% (ago/2026), série 13522 do BC.
+- **IPCA do Lula 3:** trocado por 20,1% (projeção), com o Focus de 02/10/2026 (5,01% para 2026).
+- **Vagas com carteira:** cerca de 5,6 milhões de jan/2023 a ago/2026 (soma do Caged ano a ano).
+- **Salário mínimo:** +10% acima do INPC desde jan/2023 (R$ 1.302 → R$ 1.621), conta nossa com a série 188 do BC.
+- **Subalimentação:** 2,4% em 2022–2024 vem do SOFI **2025**; o SOFI 2026 (2023–2025) só publica "< 2,5%".
+- **Saída do mapa em 2014:** critério de menos de 5% (Instituto Fome Zero).
+- **Negativados +27%:** base 2022 (66 milhões, número do plano).
+- **IPOs por ano:** 5, 28, 46, 0, 0, 0, 0 e 1 (contagem da B3, que inclui BDRs).
+- **Dívida bruta:** 86,9% (2020), 77,3% (2021) e **71,7%** (2022; o site dizia 71,6%), série 13762 do BC.
+- **PIB per capita:** confere; o grupo de comparação é "países de renda média" (não "renda média-alta", que cresceu 12,5%).
+- **Projeção de 2026:** o artigo do G1 não foi achado; trocado por FMI de abril (emergentes e em desenvolvimento 3,9% × Brasil 1,9%; em julho o Brasil subiu para 2,4%).
+- **Commodities:** caíram três anos seguidos em dólar (Banco Mundial). Em reais (IC-Br), não.
+- **Guerra e petróleo (FMI):** o +0,2 ponto está no texto do FMI, que fala da guerra e de energia, não de Ormuz.
+- **Extrema pobreza sem programas sociais:** 10% contra 3,5% (IBGE, SIS 2025). A simulação tira todos os programas sociais, não só Bolsa Família e BPC.
+- **Alíquota de cerca de 28%:** Fazenda (jan/2025); o Comitê Gestor do IBS usa 27,91%.
+- **Indústria de transformação:** 10,8% do PIB em 2023, a preços constantes de 2019 (Fiesp/IBGE).
 
 ## Para ampliar (não é pendente: não aparece no site)
 

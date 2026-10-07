@@ -1,5 +1,7 @@
 import { video, inst, esp, URLS } from '../fontes.js';
 
+const iposB3 = esp('Acionista, histórico de IPOs na B3 (contagem da B3)', URLS.iposB3Historico);
+
 const b3 = inst('b3', 'ofertas públicas iniciais (IPOs)');
 
 
@@ -33,14 +35,14 @@ export default {
       descricao: 'Barras com o número de aberturas de capital por ano, de 2019 a 2026.',
       nota: '2026: até 31/08/2026.',
       itens: [
-        { id: 'p08-ipo-2019', rotulo: 'IPOs em 2019', curto: '2019', numero: 5, valor: '5', selo: 'pendente', ressalva: null, saibaMais: null, fonte: video(577) },
-        { id: 'p08-ipo-2020', rotulo: 'IPOs em 2020', curto: '2020', numero: 28, valor: '28', selo: 'pendente', ressalva: null, pendencia: 'Boom com a Selic na mínima histórica; a contagem varia por metodologia.', saibaMais: 'A B3 fala em cerca de 71 IPOs em 2020–21; o vídeo soma 79 no mandato anterior.', fonte: video(577) },
-        { id: 'p08-ipo-2021', rotulo: 'IPOs em 2021', curto: '2021', numero: 46, valor: '46', selo: 'pendente', ressalva: null, pendencia: 'Boom com a Selic baixa; a seca de IPOs começou em ago/2021.', saibaMais: 'A B3 fala em cerca de 71 IPOs em 2020–21; o vídeo soma 79 no mandato anterior.', fonte: video(577) },
+        { id: 'p08-ipo-2019', rotulo: 'IPOs em 2019', curto: '2019', numero: 5, valor: '5', selo: 'verificado', ressalva: null, saibaMais: null, fonte: iposB3 },
+        { id: 'p08-ipo-2020', rotulo: 'IPOs em 2020', curto: '2020', numero: 28, valor: '28', selo: 'verificado', ressalva: null, saibaMais: 'Contagem da B3, que inclui empresas estrangeiras listadas por BDR. Contando só empresas que seguem listadas, seriam 24.', fonte: iposB3 },
+        { id: 'p08-ipo-2021', rotulo: 'IPOs em 2021', curto: '2021', numero: 46, valor: '46', selo: 'verificado', ressalva: null, saibaMais: 'Contagem da B3, que inclui o BDR do Nubank (dez/2021). Contando só empresas que seguem listadas, seriam 37. O último IPO local de 2021 foi em setembro.', fonte: iposB3 },
         { id: 'p08-ipo-2022', rotulo: 'IPOs em 2022', curto: '2022', numero: 0, valor: '0', selo: 'verificado', ressalva: null, saibaMais: 'Zero IPOs, ainda no governo anterior.', fonte: b3 },
         { id: 'p08-ipo-2023', rotulo: 'IPOs em 2023', curto: '2023', numero: 0, valor: '0', selo: 'verificado', ressalva: null, saibaMais: null, fonte: b3 },
-        { id: 'p08-ipo-2024', rotulo: 'IPOs em 2024', curto: '2024', numero: 0, valor: '0', selo: 'pendente', ressalva: null, saibaMais: null, fonte: video(577) },
-        { id: 'p08-ipo-2025', rotulo: 'IPOs em 2025', curto: '2025', numero: 0, valor: '0', selo: 'pendente', ressalva: null, saibaMais: null, fonte: video(577) },
-        { id: 'p08-ipo-2026', rotulo: 'IPOs em 2026 (até 31/08)', curto: '2026*', numero: 1, valor: '1', selo: 'pendente', ressalva: null, saibaMais: null, fonte: video(577) },
+        { id: 'p08-ipo-2024', rotulo: 'IPOs em 2024', curto: '2024', numero: 0, valor: '0', selo: 'verificado', ressalva: null, saibaMais: null, fonte: iposB3 },
+        { id: 'p08-ipo-2025', rotulo: 'IPOs em 2025', curto: '2025', numero: 0, valor: '0', selo: 'verificado', ressalva: null, saibaMais: null, fonte: iposB3 },
+        { id: 'p08-ipo-2026', rotulo: 'IPOs em 2026 (até 31/08)', curto: '2026*', numero: 1, valor: '1', selo: 'verificado', ressalva: null, saibaMais: 'A Compass, em maio de 2026, encerrou cinco anos sem IPOs na B3.', fonte: esp('Poder360, Compass estreia na bolsa e encerra jejum de 5 anos', URLS.ipoCompass2026) },
       ],
     },
   ],
@@ -52,7 +54,7 @@ export default {
       valor: '1 × 79',
       selo: 'pendente',
       ressalva: null, pendencia: 'A Selic está acima de 10% desde fev/2022; os 79 são o boom de 2020–21, com juro mínimo.',
-      saibaMais: 'A seca de IPOs começou em ago/2021, antes do Lula 3, e 2022 também teve zero. A contagem varia: a B3 fala em cerca de 71 IPOs em 2020–21.',
+      saibaMais: 'A seca de IPOs começou no fim de 2021, antes do Lula 3, e 2022 também teve zero. Os 79 são a contagem da B3 (5 + 28 + 46), que inclui BDRs de empresas estrangeiras.',
       fonte: b3,
     },
     {

@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { VIDEO, REPOSITORIO_URL, DATA_CHECAGEM, FONTES_CONSULTADAS } from '../../data/fontes.js';
 import Selo from '../dados/Selo.jsx';
+import { AUTOR, PRODUCAO } from '../../data/autor.js';
 
 function Rodape() {
   return (
@@ -43,6 +44,37 @@ function Rodape() {
             </p>
           </div>
         </div>
+
+        <section className="creditos" aria-labelledby="creditos-titulo">
+          <h2 id="creditos-titulo" className="creditos__titulo">
+            Créditos
+          </h2>
+          <p className="creditos__autor">
+            <span className="creditos__papel">{AUTOR.papel}</span>
+            <strong className="creditos__nome">{AUTOR.nome}</strong>
+          </p>
+          {(AUTOR.github || AUTOR.instagram) && (
+            <ul className="creditos__links">
+              {AUTOR.github && (
+                <li>
+                  <a href={`https://github.com/${AUTOR.github}`} target="_blank" rel="noopener noreferrer" className="creditos__link">
+                    GitHub: {AUTOR.github}
+                    <span className="visualmente-oculto"> (abre em nova aba)</span>
+                  </a>
+                </li>
+              )}
+              {AUTOR.instagram && (
+                <li>
+                  <a href={`https://www.instagram.com/${AUTOR.instagram}/`} target="_blank" rel="noopener noreferrer" className="creditos__link">
+                    Instagram: @{AUTOR.instagram}
+                    <span className="visualmente-oculto"> (abre em nova aba)</span>
+                  </a>
+                </li>
+              )}
+            </ul>
+          )}
+          <p className="creditos__producao">{PRODUCAO}</p>
+        </section>
       </div>
     </footer>
   );

@@ -765,3 +765,73 @@
   stroke-width: 10px;
   opacity: 1;
 }
+
+/* ---------- Créditos (fim do site) ---------- */
+.creditos {
+  margin-top: var(--esp-7);
+  padding: var(--esp-5);
+  border: var(--borda-px) solid var(--borda);
+  border-radius: var(--raio-lg);
+  background: var(--superficie-2);
+  box-shadow: var(--sombra-1);
+  text-align: center;
+}
+
+.creditos__titulo {
+  font-size: var(--texto-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--texto-suave);
+  margin-bottom: var(--esp-3);
+}
+
+.creditos__autor {
+  display: grid;
+  gap: var(--esp-1);
+  margin-bottom: var(--esp-4);
+}
+
+.creditos__papel {
+  color: var(--texto-suave);
+}
+
+.creditos__nome {
+  font-family: var(--fonte-titulo);
+  font-weight: var(--peso-titulo);
+  font-size: var(--texto-2xl);
+  line-height: 1.1;
+}
+
+.creditos__links {
+  list-style: none;
+  margin: 0 0 var(--esp-4);
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--esp-3);
+}
+
+.creditos__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo-toque);
+  padding: 0 var(--esp-4);
+  border: var(--traco-px) solid var(--tinta);
+  border-radius: var(--raio-pilula);
+  background: var(--superficie);
+  font-weight: var(--peso-forte);
+  text-decoration: none;
+  box-shadow: 3px 3px 0 var(--carimbo);
+}
+
+.creditos__link:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--carimbo);
+}
+
+.creditos__producao {
+  margin: 0;
+  font-size: var(--texto-sm);
+  color: var(--texto-suave);
+}

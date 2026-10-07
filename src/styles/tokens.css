@@ -102,6 +102,7 @@
   --cena-chao-2: #DDBF85;
   --cena-destaque: #F2C14E;
   --cena-destaque-texto: #2C2A26;
+  --cena-alerta: #D2452A;       /* "a conta chega": vermelho-alaranjado, distinto do vermelho da Defesa */
   --cena-adereco: #FBF3DE;
   --cena-sombra: rgba(44, 42, 38, 0.16);
   --carimbo: #2C2A26;
@@ -154,6 +155,7 @@
   --cena-chao-2: #4A4130;
   --cena-destaque: #D9A43A;
   --cena-destaque-texto: #121315;
+  --cena-alerta: #EE6A4B;
   --cena-adereco: #2A2D31;
   --cena-sombra: rgba(0, 0, 0, 0.35);
   --carimbo: #000000;
@@ -199,7 +201,7 @@
     --cena-chao-2: #4A4130;
     --cena-destaque: #D9A43A;
     --cena-destaque-texto: #121315;
-  --cena-destaque-texto: #121315;
+    --cena-alerta: #EE6A4B;
     --cena-adereco: #2A2D31;
     --cena-sombra: rgba(0, 0, 0, 0.35);
     --carimbo: #000000;

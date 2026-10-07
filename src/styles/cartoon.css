@@ -104,13 +104,28 @@
 }
 
 .linha__traco {
+  stroke: var(--tinta);
   stroke-width: 3px;
+}
+
+.ponto__marca {
+  fill: var(--cena-destaque);
+  stroke: var(--tinta);
 }
 
 .curto-longo__barra {
   fill: var(--cena-destaque);
   stroke: var(--tinta);
   stroke-width: 1.5px;
+}
+
+/* No longo prazo, "a conta chega": as barras ficam vermelhas */
+.grafico--curto-longo.is-longo .curto-longo__barra {
+  fill: var(--cena-alerta);
+}
+
+.grafico--curto-longo.is-longo .caixa-economia {
+  stroke: var(--cena-alerta);
 }
 
 /* ---------- Cena que anda com a rolagem ---------- */
@@ -135,19 +150,23 @@
 
 .cena__palco {
   position: sticky;
-  top: calc(var(--altura-navbar) + env(safe-area-inset-top, 0px) + var(--esp-2));
+  /* encosta na barra: o fundo do palco cobre os passos que passam por baixo */
+  top: calc(var(--altura-navbar) + env(safe-area-inset-top, 0px));
+  padding-top: var(--esp-2);
   z-index: 2;
   max-width: 34rem;
   margin: 0 auto;
-  padding-bottom: var(--esp-2);
-  background: linear-gradient(var(--fundo) 85%, transparent);
+  padding-bottom: var(--esp-3);
+  background: var(--fundo);
 }
 
 .cena__svg {
   display: block;
-  width: 100%;
+  /* Largura limitada pela altura: o quadro nunca é cortado nem achatado */
+  width: min(100%, calc(46svh * 1.2));
   height: auto;
-  max-height: 46svh;
+  aspect-ratio: 6 / 5;
+  margin-inline: auto;
   border-radius: var(--raio-lg);
   box-shadow: var(--sombra-1);
   background: var(--cena-ceu);
@@ -473,8 +492,110 @@
   }
 }
 
+/* Tela larga: texto à esquerda, cena presa à direita (como uma reportagem interativa) */
 @media (min-width: 900px) {
+  .cena {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-template-rows: auto auto 1fr;
+    column-gap: var(--esp-7);
+    align-items: start;
+  }
+  .cena > .ilustracao__titulo {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  .cena > .rotulo-ilustracao {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: start;
+  }
+  .cena__palco {
+    grid-column: 2;
+    grid-row: 3;
+    top: calc(var(--altura-navbar) + var(--esp-6));
+    max-width: none;
+    width: 100%;
+    background: none;
+  }
   .cena__svg {
-    max-height: 52svh;
+    width: min(100%, calc((100svh - var(--altura-navbar) - 10rem) * 1.2));
+  }
+  .cena__passos {
+    grid-column: 1;
+    grid-row: 3;
+    padding: 20svh 0 30svh;
+  }
+  .cena__passo {
+    margin-bottom: 55svh;
+  }
+}
+
+/* ---------- Tarifa: fluxo de moedas ---------- */
+.tarifa__moeda circle {
+  fill: var(--cena-destaque);
+  stroke: var(--tinta);
+  stroke-width: 2px;
+}
+
+.tarifa__moeda text {
+  fill: var(--cena-destaque-texto);
+  font-weight: var(--peso-forte);
+}
+
+.tarifa__rota {
+  stroke-width: 2.5px;
+}
+
+.tarifa__pausa {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--alvo-toque);
+  padding: 0 var(--esp-4);
+  border: var(--traco-px) solid var(--tinta);
+  border-radius: var(--raio-pilula);
+  background: var(--superficie);
+  color: var(--texto);
+  font-weight: var(--peso-forte);
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--carimbo);
+  justify-self: start;
+}
+
+.tarifa__pausa:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--carimbo);
+}
+
+/* ---------- Faixas de período nos gráficos de linha (ex.: mandatos) ---------- */
+.grafico__faixa rect {
+  fill: var(--superficie-2);
+  stroke: var(--borda-controle);
+  stroke-width: 1.5px;
+  stroke-dasharray: 4 4;
+}
+
+.grafico__faixa--destaque rect {
+  fill: color-mix(in srgb, var(--cena-destaque) 22%, var(--superficie));
+  stroke: var(--tinta);
+  stroke-dasharray: none;
+}
+
+.grafico__faixa text {
+  fill: var(--texto);
+  font-family: var(--fonte-titulo);
+  font-weight: var(--peso-titulo);
+  font-size: 11px;
+}
+
+.ponto__valor--fixo {
+  font-size: 10.5px;
+}
+
+/* A cena ocupa a largura toda da parada em tela larga */
+@media (min-width: 960px) {
+  .parada__pergunta,
+  .parada__explore {
+    grid-column: 1 / -1;
   }
 }

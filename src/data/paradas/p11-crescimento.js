@@ -1,5 +1,7 @@
 import { video, inst, esp, URLS } from '../fontes.js';
 
+const dolarBc = () => esp('Banco Central, série 3698: dólar (venda), média mensal', URLS.dolarMediaMensal);
+
 export default {
   id: 'p11-crescimento',
   numero: 11,
@@ -23,6 +25,30 @@ export default {
   },
 
   graficos: [
+    {
+      tipo: 'linha',
+      id: 'p11-g-dolar',
+      titulo: 'Dólar: média de cada ano (R$)',
+      unidade: 'R$',
+      descricao: 'Linha com a média anual do dólar de 2018 a 2026. Subiu forte na pandemia, de 2019 para 2020, e oscilou entre R$ 5 e R$ 5,60 desde então.',
+      nota: 'Média das médias mensais do Banco Central (dólar de venda). *2026: janeiro a agosto. Valores nominais, sem descontar a inflação.',
+      mostrarValores: true,
+      faixas: [
+        { de: 1, ate: 4, rotulo: 'Bolsonaro' },
+        { de: 5, ate: 8, rotulo: 'Lula 3', tipo: 'destaque' },
+      ],
+      itens: [
+        { id: 'p11-dolar-2018', rotulo: 'Dólar médio em 2018', curto: '’18', numero: 3.65, valor: 'R$ 3,65', valorCurto: '3,65', selo: 'verificado', ressalva: null, saibaMais: null, fonte: dolarBc() },
+        { id: 'p11-dolar-2019', rotulo: 'Dólar médio em 2019', curto: '’19', numero: 3.95, valor: 'R$ 3,95', valorCurto: '3,95', selo: 'verificado', ressalva: null, saibaMais: null, fonte: dolarBc() },
+        { id: 'p11-dolar-2020', rotulo: 'Dólar médio em 2020', curto: '’20', numero: 5.16, valor: 'R$ 5,16', valorCurto: '5,16', selo: 'verificado', ressalva: null, saibaMais: 'Ano da pandemia: o dólar saltou de R$ 4,15 (média de janeiro) para R$ 5,64 (média de maio).', fonte: dolarBc() },
+        { id: 'p11-dolar-2021', rotulo: 'Dólar médio em 2021', curto: '’21', numero: 5.4, valor: 'R$ 5,40', valorCurto: '5,40', selo: 'verificado', ressalva: null, saibaMais: null, fonte: dolarBc() },
+        { id: 'p11-dolar-2022', rotulo: 'Dólar médio em 2022', curto: '’22', numero: 5.16, valor: 'R$ 5,16', valorCurto: '5,16', selo: 'verificado', ressalva: null, saibaMais: null, fonte: dolarBc() },
+        { id: 'p11-dolar-2023', rotulo: 'Dólar médio em 2023', curto: '’23', numero: 4.99, valor: 'R$ 4,99', valorCurto: '4,99', selo: 'verificado', ressalva: null, saibaMais: null, fonte: dolarBc() },
+        { id: 'p11-dolar-2024', rotulo: 'Dólar médio em 2024', curto: '’24', numero: 5.39, valor: 'R$ 5,39', valorCurto: '5,39', selo: 'verificado', ressalva: null, saibaMais: 'Em dezembro de 2024 a média mensal chegou a R$ 6,10, a maior da série.', fonte: dolarBc() },
+        { id: 'p11-dolar-2025', rotulo: 'Dólar médio em 2025', curto: '’25', numero: 5.59, valor: 'R$ 5,59', valorCurto: '5,59', selo: 'verificado', ressalva: null, saibaMais: null, fonte: dolarBc() },
+        { id: 'p11-dolar-2026', rotulo: 'Dólar médio em 2026 (jan. a ago.)', curto: '’26*', numero: 5.15, valor: 'R$ 5,15', valorCurto: '5,15', selo: 'verificado', ressalva: null, saibaMais: null, fonte: dolarBc() },
+      ],
+    },
     {
       tipo: 'tarifa',
       id: 'p11-g-tarifa',
@@ -73,12 +99,12 @@ export default {
     },
     {
       id: 'p11-dolar',
-      rotulo: 'Dólar',
-      valor: 'R$ 5,21 → R$ 5,15',
-      selo: 'pendente',
-      ressalva: null, pendencia: 'R$ 5,15 confere com a cotação de 16/09/2026, mas é a foto de um dia.',
-      saibaMais: 'O câmbio oscila bastante: R$ 5,45 em 24/06/2026, R$ 5,08 em 24/07/2026 e R$ 5,22 em 28/09/2026.',
-      fonte: inst('bcb', 'cotações do dólar (PTAX)'),
+      rotulo: 'Dólar médio: 2022 × 2026 (jan. a ago.)',
+      valor: 'R$ 5,16 → R$ 5,15',
+      selo: 'verificado',
+      ressalva: null,
+      saibaMais: 'Média das médias mensais do Banco Central. O câmbio oscila bastante dentro do ano: R$ 5,45 em 24/06/2026, R$ 5,08 em 24/07/2026 e R$ 5,22 em 28/09/2026. O dólar depende também de fatores de fora (juros dos EUA, força do dólar no mundo), não só do governo.',
+      fonte: dolarBc(),
     },
   ],
 

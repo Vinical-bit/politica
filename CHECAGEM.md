@@ -7,7 +7,7 @@ O site agora tem um único selo, **Verificado**. Todo número publicado precisa 
 2. **Achou um valor diferente:** corrija o `valor` (e o `numero`, se for gráfico) e faça o passo 1.
 3. **Não achou:** apague o dado do arquivo da parada.
 
-## Números e contas que precisam de checagem (12)
+## Números e contas que precisam de checagem (11)
 
 | Parada | Dado | No site | O que falta checar | Onde checar |
 | --- | --- | --- | --- | --- |
@@ -19,7 +19,6 @@ O site agora tem um único selo, **Verificado**. Todo número publicado precisa 
 | 8 | IPOs em 2020 | 28 | Contagem do vídeo de referência; não conferida na B3. | [B3](https://www.b3.com.br/) |
 | 8 | IPOs em 2021 | 46 | Idem. | [B3](https://www.b3.com.br/) |
 | 11 | Superávit comercial | US$ 241 bi × US$ 222 bi | Somar os saldos anuais do MDIC (2023 foi US$ 98,8 bi). | [MDIC](https://www.gov.br/mdic/pt-br/assuntos/noticias/2024/janeiro/comercio-exterior-brasileiro-bate-recordes-e-fecha-2023-com-saldo-de-us-98-8-bi) |
-| 11 | Dólar | R$ 5,21 → R$ 5,15 | R$ 5,15 confere (16/09/2026). Falta o R$ 5,21 de dez/2022. | [Banco Central, cotações](https://www.bcb.gov.br/estabilidadefinanceira/historicocotacoes) |
 | 11 | Petróleo/Ormuz (FMI) | +0,2 ponto no PIB de 2026 | É projeção do FMI, não efeito medido. Confirmar no relatório de abril/2026. | [FMI WEO](https://www.imf.org/en/Publications/WEO) |
 | 13 | Alíquota do IVA | Cerca de 28% | É estimativa; a alíquota final ainda será fixada pelo Senado. | [Fazenda](https://www.gov.br/fazenda/pt-br/acesso-a-informacao/acoes-e-programas/reforma-tributaria) |
 | 13 | Comércio e serviços | 71% dos empregos, 67,4% do PIB | É comércio + serviços juntos (MDIC). A fala diz "serviços, mais de 60%". Achar a página do MDIC. | [MDIC](https://www.gov.br/mdic/pt-br) |
@@ -47,6 +46,8 @@ O site agora tem um único selo, **Verificado**. Todo número publicado precisa 
 ---
 
 ## Resolvido nesta rodada
+
+- **Dólar (07/10/2026, ramificação cartoon):** trocado por médias anuais da série 3698 do Banco Central (dólar de venda, média mensal): R$ 5,16 em 2022 e R$ 5,15 em 2026 (jan. a ago.). Entrou também o gráfico 2018–2026. A foto de um dia (R$ 5,21 → R$ 5,15) saiu.
 
 - **Renda de R$ 3.032 (2022) → R$ 3.560 (2025), +17,4%: verificado.** É a renda de 2022 a preços de 2025 (altas reais do IBGE: 2023 +7,2%, 2024 +3,7%, 2025 +5,7%).
 - **16 números que conferiam com ressalva** viraram "Verificado"; o contexto foi para o "Saiba mais".

@@ -86,6 +86,7 @@ export const URLS = {
   pisaRelatorio: 'https://download.inep.gov.br/acoes_internacionais/pisa/resultados/2025/resultados_pisa_2025.pdf',
   pnad2023Anual: 'https://agenciadenoticias.ibge.gov.br/agencia-sala-de-imprensa/2013-agencia-de-noticias/releases/39025-pnad-continua-em-2023-taxa-anual-de-desocupacao-foi-de-7-8-enquanto-de-taxa-de-subutilizacao-foi-de-18-0',
   pnad2024Anual: 'https://agenciadenoticias.ibge.gov.br/agencia-sala-de-imprensa/2013-agencia-de-noticias/releases/42530-pnad-continua-em-2024-taxa-anual-de-desocupacao-foi-de-6-6-enquanto-taxa-de-subutilizacao-foi-de-16-2',
+  dolarMediaMensal: 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.3698/dados?formato=json&dataInicial=01/01/2018',
   pisaRankingOpovo: 'https://mais.opovo.com.br/jornal/cidades/2026/09/09/matematica-e-o-indice-mais-critico-do-brasil-no-pisa-2025-na-71-colocacao-global.html',
   pnadJul2026: 'https://agenciadenoticias.ibge.gov.br/agencia-sala-de-imprensa/2013-agencia-de-noticias/releases/47849-pnad-continua-desocupacao-e-de-5-3-e-subutilizacao-e-de-13-0-no-trimestre-encerrado-em-julho',
   pnad2022Anual: 'https://agenciadenoticias.ibge.gov.br/agencia-sala-de-imprensa/2013-agencia-de-noticias/releases/36336-pnad-continua-em-2022-taxa-media-anual-de-desocupacao-foi-de-9-3-enquanto-de-taxa-de-subutilizacao-foi-de-20-8',

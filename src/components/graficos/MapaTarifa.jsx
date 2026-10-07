@@ -1,4 +1,4 @@
-import { memo, useLayoutEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion.js';
 import RotuloIlustracao from './RotuloIlustracao.jsx';
 
@@ -18,7 +18,7 @@ function pontoBezier(a, c, b, t) {
   return { x: u * u * a.x + 2 * u * t * c.x + t * t * b.x, y: u * u * a.y + 2 * u * t * c.y + t * t * b.y };
 }
 
-/** P11: esquema antes/depois da tarifa, com três pontos e moedas animadas (ilustração). */
+/** P11: esquema antes/depois da tarifa, com três pontos e um fluxo contínuo de moedas (ilustração). */
 function MapaTarifa({ grafico }) {
   const [estado, setEstado] = useState('antes');
   const reduzir = usePrefersReducedMotion();
@@ -26,20 +26,19 @@ function MapaTarifa({ grafico }) {
   const a = PONTOS[rota.de];
   const b = PONTOS[rota.para];
   const caminho = `M${a.x} ${a.y} Q${rota.ctrl.x} ${rota.ctrl.y} ${b.x} ${b.y}`;
-  const n = 4;
+  const n = 6;
   const svgRef = useRef(null);
 
-  // Inicia o deslocamento das moedas a cada troca (antes do primeiro desenho).
-  useLayoutEffect(() => {
-    if (reduzir || !svgRef.current) return;
-    svgRef.current.querySelectorAll('animateMotion').forEach((a) => {
-      try {
-        a.beginElement();
-      } catch {
-        /* navegador sem SMIL: as moedas ficam na origem da rota */
-      }
-    });
-  }, [estado, reduzir]);
+  const [pausado, setPausado] = useState(false);
+  const DUR = 2.4; // segundos para uma moeda fazer a rota inteira
+
+  // Fluxo contínuo de moedas, com botão de pausa (WCAG 2.2.2: movimento que dura mais de 5 s pode ser pausado)
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg || typeof svg.pauseAnimations !== 'function') return;
+    if (pausado) svg.pauseAnimations();
+    else svg.unpauseAnimations();
+  }, [pausado, estado]);
 
   return (
     <figure className="grafico grafico--tarifa">
@@ -67,13 +66,14 @@ function MapaTarifa({ grafico }) {
               </g>
             );
           }
-          // Todas as moedas partem juntas, com a mesma duração, e param na posição final (sem laço infinito).
-          const f = ((i + 1) / (n + 1)).toFixed(3);
+          // Fluxo: as moedas seguem a rota sem parar, igualmente espaçadas no tempo.
+          const inicio = `${(-(i * DUR) / n).toFixed(2)}s`;
           return (
-            <g key={`${estado}-${i}`} className="tarifa__moeda">
+            <g key={`${estado}-${i}`} className="tarifa__moeda" opacity="0">
               <circle r="9" />
               <text y="4" textAnchor="middle">$</text>
-              <animateMotion dur="0.9s" begin="indefinite" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1" keyPoints={`0;${f}`} keyTimes="0;1" path={caminho} />
+              <animateMotion dur={`${DUR}s`} begin={inicio} repeatCount="indefinite" path={caminho} />
+              <animate attributeName="opacity" dur={`${DUR}s`} begin={inicio} repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.12;0.85;1" />
             </g>
           );
         })}
@@ -90,6 +90,11 @@ function MapaTarifa({ grafico }) {
           );
         })}
       </svg>
+      {!reduzir && (
+        <button type="button" className="tarifa__pausa" aria-pressed={pausado} onClick={() => setPausado((v) => !v)}>
+          {pausado ? 'Continuar o fluxo' : 'Pausar o fluxo'}
+        </button>
+      )}
       <p className="tarifa__legenda" aria-live="polite">
         {rota.texto}
       </p>

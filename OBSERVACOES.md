@@ -125,3 +125,14 @@ Teste de uma estética "tipo vídeo" em cartoon editorial. Se não ficar boa, ba
 - **Acessibilidade:** todo o conteúdo está nos passos, em texto comum. O palco é uma imagem decorativa (`role="img"` com descrição). O contraste continua AA nos dois temas e o Lighthouse dá acessibilidade 100.
 - **Desempenho:** o Lighthouse móvel caiu de 95 para 91.
 - **Dados:** nenhum dado foi alterado.
+
+### Ajustes da 2ª rodada (07/10/2026)
+
+- **Câmera:** deixou de ser limitada pelas bordas do cenário (o fundo é desenhado bem além do quadro) e mira um pouco acima da parte. Assim, a parte e o balão ficam sempre inteiros no centro. O zoom caiu de 1,75 para 1,55.
+- **Quadro da cena:** a largura passa a ser limitada pela altura da tela, o que acabou com o corte embaixo.
+- **Tela larga:** o texto fica à esquerda e a cena presa à direita.
+- **Troca de passo:** no celular, o passo ativo é medido logo abaixo do palco (antes, a linha caía atrás dele).
+- **Curto × longo prazo:** no "longo prazo" as barras ficam vermelhas (`--cena-alerta`). É um vermelho-alaranjado, diferente do vermelho da Defesa, mas ainda é próximo; ver a nota na conversa.
+- **Tarifa:** as moedas correm sem parar pela rota, como um fluxo, e há um botão "Pausar o fluxo" (WCAG 2.2.2). Com "reduzir movimento", as moedas ficam paradas.
+- **Dólar (p11):** entrou o gráfico com a média anual de 2018 a 2026, com faixas "Bolsonaro" e "Lula 3". A fonte é a série 3698 do Banco Central. O cartão do dólar, que estava pendente (foto de um dia), virou média anual verificada: R$ 5,16 em 2022 e R$ 5,15 em 2026 (jan. a ago.). Os pendentes caíram de 27 para 26.
+- **Gráficos de linha:** passaram a aceitar `faixas` (períodos) e `mostrarValores` (valor fixo em cada ponto).

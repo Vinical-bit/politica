@@ -7,7 +7,9 @@ import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion.js'
 const L = 360;
 const A = 300;
 const C = { x: 180, y: 150 };
-const ZOOM = 1.75;
+const ZOOM = 1.55;
+// A câmera mira um pouco acima da parte, para o balão caber no quadro
+const SUBIR_ALVO = 22;
 
 // Cenas sem personagens: 'familia' usa a casa.
 const CENA_PARA_ICONE = { familia: 'casa' };
@@ -32,12 +34,13 @@ function posicoes(n) {
   });
 }
 
-/** Camera: leva o ponto (x, y) para o centro do palco com o zoom z. */
+/** Câmera: leva o ponto (x, y) para o centro do palco com o zoom z.
+ *  Sem limite nas bordas: o cenário é desenhado bem além do quadro,
+ *  então a parte (e o balão) sempre ficam no centro, nunca cortados. */
 function camera(alvo, z) {
   if (!alvo) return 'translate(0px, 0px) scale(1)';
-  // Limita para a câmera não sair do cenário desenhado
-  const x = Math.min(Math.max(alvo.x, L / (2 * z)), L - L / (2 * z));
-  const y = Math.min(Math.max(alvo.y, A / (2 * z)), A - A / (2 * z));
+  const x = alvo.x;
+  const y = alvo.y - SUBIR_ALVO;
   return `translate(${C.x - x * z}px, ${C.y - y * z}px) scale(${z})`;
 }
 
@@ -52,6 +55,7 @@ function CenaRolagem({ ilustracao, exploradas, onExplorar }) {
   const n = partes.length;
   const [ativo, setAtivo] = useState(-1); // -1 = visão geral
   const passosRef = useRef([]);
+  const palcoRef = useRef(null);
   const reduzir = usePrefersReducedMotion();
   const pos = posicoes(n);
   const icoCena = CENA_PARA_ICONE[ilustracao.cena] ?? ilustracao.cena;
@@ -63,7 +67,11 @@ function CenaRolagem({ ilustracao, exploradas, onExplorar }) {
     let quadro = 0;
     const medir = () => {
       quadro = 0;
-      const linha = window.innerHeight * 0.6;
+      // Linha de ativação: no celular, um pouco abaixo do palco (que fica preso no topo);
+      // em tela larga (palco ao lado), no meio da tela.
+      const palco = palcoRef.current?.getBoundingClientRect();
+      const lado = window.matchMedia('(min-width: 900px)').matches;
+      const linha = !lado && palco ? palco.bottom + (window.innerHeight - palco.bottom) * 0.45 : window.innerHeight * 0.72;
       const els = passosRef.current;
       let novo = -1;
       for (let i = 0; i < n; i++) {
@@ -115,7 +123,7 @@ function CenaRolagem({ ilustracao, exploradas, onExplorar }) {
       <figcaption className="ilustracao__titulo">{ilustracao.titulo}</figcaption>
       {ilustracao.argumento && <RotuloIlustracao />}
 
-      <div className="cena__palco">
+      <div className="cena__palco" ref={palcoRef}>
         <svg viewBox={`0 0 ${L} ${A}`} className="cena__svg" role="img" aria-label={`${ilustracao.titulo}. ${ilustracao.descricao}`}>
           <defs>
             <clipPath id={`moldura-${ilustracao.cena}-${n}`}>

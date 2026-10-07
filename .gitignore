@@ -3,3 +3,5 @@ dist
 referencia/
 .DS_Store
 *.log
+*.bundle
+Claude outputs/

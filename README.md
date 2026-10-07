@@ -27,7 +27,7 @@ npm run preview    # serve o build em http://localhost:4173/politica/
 1. Crie um repositório chamado `politica` no GitHub e envie o código para a branch `main`.
 2. No repositório, vá em **Settings → Pages → Build and deployment** e escolha **Source: GitHub Actions**.
 3. Cada push na `main` roda `.github/workflows/deploy.yml`: instala, gera o build e publica `dist/`.
-4. O site fica em `https://SEU-USUARIO.github.io/politica/`.
+4. O site fica em `https://vinical-bit.github.io/politica/`.
 
 Se o repositório tiver outro nome, troque `base: '/politica/'` em `vite.config.js`. O endereço do repositório exibido no rodapé fica em `REPOSITORIO_URL`, no arquivo `src/data/fontes.js`.
 
@@ -110,3 +110,7 @@ A pasta `referencia/` (transcrição e prints do vídeo) **não vai para o GitHu
 2. Para corrigir, edite só o arquivo da parada em `src/data/paradas/`, rode `node scripts/validar-dados.mjs` e abra um *pull request*.
 3. Mantenha a neutralidade: Defesa e Crítica com o mesmo peso, sem adjetivo de torcida, sem cores partidárias.
 4. Divergências que ainda não foram resolvidas ficam em [`OBSERVACOES.md`](OBSERVACOES.md).
+
+## Prévia do link (redes sociais)
+
+`public/og.png` (1200×630) é a imagem que aparece quando o link é colado no WhatsApp, Instagram ou X. As tags `og:*` e `twitter:*` ficam em `index.html` e apontam para `https://vinical-bit.github.io/politica/`. Se o endereço mudar (domínio próprio, por exemplo), atualize essas URLs.

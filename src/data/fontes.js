@@ -11,7 +11,7 @@ export const VIDEO = {
 };
 
 // Endereço do repositório no GitHub (edite aqui).
-export const REPOSITORIO_URL = 'https://github.com/SEU-USUARIO/politica';
+export const REPOSITORIO_URL = 'https://github.com/Vinical-bit/politica';
 
 // Data da checagem exibida no rodapé.
 export const DATA_CHECAGEM = '06/10/2026';

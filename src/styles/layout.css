@@ -1,0 +1,624 @@
+/* layout.css — navbar e painel (vidro), abertura (vidro), paradas, rodapé. */
+
+/* ---------- Vidro: só nas molduras (Navbar, MenuParadas, Abertura) ----------
+   O desfoque fica num ::before, e não no próprio elemento: backdrop-filter no
+   elemento cria um bloco de contenção para filhos position: fixed (o painel de
+   paradas, que mora dentro da Navbar, ficaria preso nos 60 px da barra). */
+.vidro {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  border: var(--borda-px) solid var(--vidro-borda);
+}
+
+.vidro::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--vidro);
+  -webkit-backdrop-filter: blur(var(--desfoque)) saturate(1.1);
+  backdrop-filter: blur(var(--desfoque)) saturate(1.1);
+  pointer-events: none;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .vidro {
+    border-color: var(--borda);
+  }
+  .vidro::before {
+    background: var(--superficie);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .vidro {
+    border-color: var(--borda);
+  }
+  .vidro::before {
+    background: var(--superficie);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* ---------- Navbar fixa ---------- */
+.navbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  padding-top: env(safe-area-inset-top, 0px);
+  border-width: 0 0 var(--borda-px) 0;
+}
+
+.navbar__interno {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-1);
+  height: var(--altura-navbar);
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: 0 max(var(--gutter), env(safe-area-inset-right, 0px)) 0 max(var(--gutter), env(safe-area-inset-left, 0px));
+}
+
+.navbar__marca {
+  font-family: var(--fonte-titulo);
+  font-weight: var(--peso-titulo);
+  font-size: var(--texto-lg);
+  letter-spacing: var(--espaco-letras-titulo);
+  text-decoration: none;
+  margin-right: auto;
+  padding: var(--esp-2) 0;
+}
+
+.navbar__trilhas {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__trilha {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  min-height: var(--alvo-toque);
+  min-width: var(--alvo-toque);
+  justify-content: center;
+  padding: 0 var(--esp-2);
+  border-radius: var(--raio-pilula);
+  text-decoration: none;
+  font-size: var(--texto-sm);
+  color: var(--texto-suave);
+  transition:
+    background-color var(--tempo-medio) var(--curva),
+    color var(--tempo-medio) var(--curva);
+}
+
+.navbar__trilha:hover {
+  color: var(--texto);
+}
+
+.navbar__trilha.is-ativa {
+  color: var(--texto);
+  font-weight: var(--peso-forte);
+}
+
+.navbar__trilha-num {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: var(--traco-px) solid var(--borda-controle);
+  font-family: var(--fonte-numero);
+  font-size: var(--texto-xs);
+  transition:
+    background-color var(--tempo-medio) var(--curva),
+    color var(--tempo-medio) var(--curva),
+    border-color var(--tempo-medio) var(--curva);
+}
+
+.navbar__trilha.is-ativa .navbar__trilha-num {
+  background: var(--tinta);
+  border-color: var(--tinta);
+  color: var(--tinta-sobre);
+}
+
+.navbar__trilha-nome {
+  display: none;
+}
+
+.navbar__tema {
+  display: inline-grid;
+  place-items: center;
+  width: var(--alvo-toque);
+  min-width: var(--alvo-toque);
+  flex-shrink: 0;
+  padding: 0;
+  height: var(--alvo-toque);
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--tinta);
+  cursor: pointer;
+  transition: transform var(--tempo-rapido) var(--curva);
+}
+
+.navbar__tema:active {
+  transform: scale(0.92);
+}
+
+.navbar__paradas {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  min-height: var(--alvo-toque);
+  padding: 0 var(--esp-3);
+  border: var(--traco-px) solid var(--tinta);
+  border-radius: var(--raio-pilula);
+  background: var(--tinta);
+  color: var(--tinta-sobre);
+  font-weight: var(--peso-forte);
+  font-size: var(--texto-sm);
+  cursor: pointer;
+  transition: transform var(--tempo-rapido) var(--curva);
+}
+
+.navbar__paradas:active {
+  transform: scale(0.97);
+}
+
+@media (min-width: 820px) {
+  .navbar__trilha-nome {
+    display: inline;
+  }
+  .navbar__trilhas {
+    gap: var(--esp-2);
+  }
+}
+
+@media (max-width: 380px) {
+  .navbar__marca {
+    font-size: var(--texto-base);
+  }
+  .navbar__paradas {
+    padding: 0 var(--esp-2);
+  }
+}
+
+/* Barra de progresso colada no topo */
+.barra-progresso {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  pointer-events: none;
+}
+
+.barra-progresso__preenchimento {
+  height: 100%;
+  background: var(--tinta);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform var(--tempo-rapido) linear;
+}
+
+/* ---------- Painel "Paradas" (vidro) ---------- */
+.menu-paradas {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: var(--veu);
+  display: flex;
+  justify-content: flex-end;
+  animation: some var(--tempo-medio) var(--curva);
+}
+
+.menu-paradas__painel {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: calc(env(safe-area-inset-top, 0px) + var(--esp-3)) var(--gutter) calc(env(safe-area-inset-bottom, 0px) + var(--esp-6));
+  border-width: 0 0 0 var(--borda-px);
+  box-shadow: var(--sombra-2);
+  animation: painel-entra var(--tempo-medio) var(--curva);
+}
+
+/* No painel o vidro é mais denso: o texto da lista não pode depender do fundo */
+.menu-paradas__painel.vidro::before {
+  background: var(--superficie);
+}
+
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .menu-paradas__painel.vidro::before {
+    background: color-mix(in srgb, var(--superficie) 88%, transparent);
+  }
+}
+
+@media (min-width: 640px) {
+  .menu-paradas__painel {
+    width: 26rem;
+  }
+}
+
+@keyframes painel-entra {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+}
+
+@keyframes some {
+  from {
+    opacity: 0;
+  }
+}
+
+.menu-paradas__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--esp-3);
+}
+
+.menu-paradas__titulo {
+  font-size: var(--texto-xl);
+  margin: 0;
+}
+
+.menu-paradas__trilha {
+  margin-bottom: var(--esp-5);
+}
+
+.menu-paradas__trilha-titulo {
+  font-family: var(--fonte-texto);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-forte);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  margin-bottom: var(--esp-2);
+}
+
+.menu-paradas__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.menu-paradas__link {
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+  min-height: 48px;
+  padding: var(--esp-2) var(--esp-3);
+  border-radius: var(--raio-md);
+  text-decoration: none;
+  border: var(--traco-px) solid transparent;
+  transition:
+    background-color var(--tempo-medio) var(--curva),
+    border-color var(--tempo-medio) var(--curva);
+}
+
+.menu-paradas__link:hover {
+  background: var(--superficie-2);
+}
+
+.menu-paradas__link.is-atual {
+  border-color: var(--tinta);
+  font-weight: var(--peso-forte);
+}
+
+.menu-paradas__numero {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: var(--traco-px) solid var(--borda-controle);
+  font-family: var(--fonte-numero);
+  font-size: var(--texto-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.menu-paradas__link.is-atual .menu-paradas__numero {
+  background: var(--tinta);
+  color: var(--tinta-sobre);
+  border-color: var(--tinta);
+}
+
+.menu-paradas__nome {
+  flex: 1;
+}
+
+.menu-paradas__visitada {
+  color: var(--texto-suave);
+  display: inline-flex;
+}
+
+/* ---------- Main ---------- */
+main {
+  padding-top: calc(var(--altura-navbar) + env(safe-area-inset-top, 0px));
+}
+
+/* ---------- Abertura (moldura de vidro) ---------- */
+.abertura {
+  min-height: calc(100svh - var(--altura-navbar));
+  display: flex;
+  align-items: center;
+  padding: var(--esp-6) var(--gutter) var(--esp-7);
+  scroll-margin-top: calc(var(--altura-navbar) + env(safe-area-inset-top, 0px));
+}
+
+.abertura__conteudo {
+  max-width: 44rem;
+  margin: 0 auto;
+  width: 100%;
+  padding: var(--esp-6) var(--esp-5);
+  border-radius: var(--raio-lg);
+}
+
+@media (min-width: 640px) {
+  .abertura__conteudo {
+    padding: var(--esp-7) var(--esp-7);
+  }
+}
+
+.abertura__edicao {
+  display: inline-block;
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-forte);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--texto-suave);
+  margin-bottom: var(--esp-2);
+}
+
+.abertura__titulo {
+  font-size: var(--texto-3xl);
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+  margin-bottom: var(--esp-3);
+}
+
+.abertura__subtitulo {
+  font-family: var(--fonte-titulo);
+  font-size: var(--texto-xl);
+  line-height: 1.2;
+  margin-bottom: var(--esp-5);
+}
+
+.abertura__video {
+  font-size: var(--texto-lg);
+  line-height: 1.5;
+}
+
+/* A legenda e o método ficam em superfície opaca (texto não depende do vidro) */
+.abertura__legenda {
+  margin: var(--esp-5) 0;
+  padding: var(--esp-4) var(--esp-5);
+  border: var(--borda-px) solid var(--borda);
+  border-radius: var(--raio-md);
+  background: var(--superficie);
+}
+
+.abertura__legenda-titulo {
+  font-size: var(--texto-lg);
+  margin-bottom: var(--esp-3);
+}
+
+.abertura__nota {
+  margin: var(--esp-3) 0 0;
+  font-size: var(--texto-sm);
+  color: var(--texto-suave);
+}
+
+.abertura__metodo {
+  display: flex;
+  gap: var(--esp-3);
+  align-items: flex-start;
+}
+
+.abertura__metodo .icone {
+  margin-top: 3px;
+}
+
+.abertura__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-3);
+  margin-top: var(--esp-5);
+}
+
+/* ---------- Paradas: cada uma é uma "cena" ---------- */
+.parada {
+  min-height: 100svh;
+  padding: var(--esp-7) var(--gutter) var(--esp-8);
+  scroll-margin-top: calc(var(--altura-navbar) + env(safe-area-inset-top, 0px));
+  position: relative;
+}
+
+/* Demarcação discreta entre cenas */
+.parada::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(var(--largura-max), calc(100% - 2 * var(--gutter)));
+  transform: translateX(-50%);
+  border-top: var(--borda-px) solid var(--borda-controle);
+  opacity: 0.5;
+}
+
+.parada__conteudo {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  display: grid;
+  gap: var(--esp-5);
+}
+
+/* Revelação ao rolar: opacidade + 8 px, uma única vez */
+.parada__conteudo > * {
+  opacity: 0;
+  transform: translateY(var(--deslocamento-entrada));
+  transition:
+    opacity var(--tempo-entrada) var(--curva),
+    transform var(--tempo-entrada) var(--curva);
+}
+
+.parada.is-visivel .parada__conteudo > * {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parada__conteudo > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.parada__cabecalho {
+  max-width: var(--largura-texto);
+}
+
+.parada__sobretitulo {
+  display: inline-block;
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-forte);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  margin-bottom: var(--esp-2);
+  padding: 2px var(--esp-3);
+  border-radius: var(--raio-pilula);
+  background: var(--superficie);
+  border: var(--borda-px) solid var(--borda);
+}
+
+.parada__titulo {
+  font-size: var(--texto-2xl);
+}
+
+.parada__titulo:focus {
+  outline: none;
+}
+
+.parada__titulo:focus-visible {
+  outline: 2px solid var(--foco);
+}
+
+.parada__abertura {
+  font-size: var(--texto-lg);
+  line-height: 1.5;
+  padding: var(--esp-2) 0;
+}
+
+.parada__bloco-titulo {
+  font-size: var(--texto-lg);
+  margin-bottom: var(--esp-3);
+}
+
+.parada__pergunta {
+  max-width: var(--largura-texto);
+  padding: var(--esp-4) var(--esp-5);
+  background: var(--superficie);
+  border: var(--borda-px) solid var(--borda);
+  border-radius: var(--raio-lg);
+  box-shadow: var(--sombra-1);
+}
+
+.parada__pergunta-rotulo {
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-forte);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--texto-suave);
+  margin-bottom: var(--esp-1);
+}
+
+.parada__pergunta-texto {
+  font-family: var(--fonte-titulo);
+  font-size: var(--texto-xl);
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* Fundo opaco atrás dos títulos de bloco para não brigar com as curvas */
+.parada__bloco-titulo,
+.parada__titulo,
+.parada__abertura {
+  text-shadow: 0 0 6px var(--fundo), 0 0 2px var(--fundo);
+}
+
+@media (min-width: 960px) {
+  .parada__conteudo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--esp-6);
+    align-items: start;
+  }
+  .parada__cabecalho,
+  .parada__dados,
+  .parada__placar,
+  .parada__debate,
+  .parada__mede,
+  .parada__choques,
+  .parada__regua,
+  .parada__saiba-mais,
+  .parada__abertas,
+  .parada__quiz {
+    grid-column: 1 / -1;
+  }
+  .parada__titulo {
+    font-size: 2.6rem;
+  }
+}
+
+/* ---------- Rodapé ---------- */
+.rodape {
+  border-top: var(--borda-px) solid var(--borda);
+  background: var(--superficie);
+  padding: var(--esp-7) var(--gutter) calc(var(--esp-7) + env(safe-area-inset-bottom, 0px));
+}
+
+.rodape__conteudo {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+}
+
+.rodape__aviso {
+  font-family: var(--fonte-titulo);
+  font-size: var(--texto-lg);
+  max-width: var(--largura-texto);
+  margin-bottom: var(--esp-6);
+}
+
+.rodape__grade {
+  display: grid;
+  gap: var(--esp-5);
+}
+
+@media (min-width: 860px) {
+  .rodape__grade {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.rodape__titulo {
+  font-family: var(--fonte-texto);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-forte);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--texto-suave);
+  margin: var(--esp-4) 0 var(--esp-2);
+}

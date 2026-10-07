@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Política · Governo Lula 3 por dentro dos números</title>
+    <meta name="description" content="O balanço econômico do 3º governo Lula (2023–2026), parada por parada: o que o vídeo afirma, os dois lados, os dados com selo de checagem e a fonte. Sem veredito." />
+    <meta name="theme-color" content="#EFEBE3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121315" media="(prefers-color-scheme: dark)" />
+    <script>
+      /* Define o tema antes do primeiro desenho (evita o "flash" de tema errado). */
+      (function () {
+        var t = null;
+        try { t = localStorage.getItem('politica:tema'); } catch (e) {}
+        if (t !== 'claro' && t !== 'escuro') {
+          t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'escuro' : 'claro';
+        }
+        document.documentElement.setAttribute('data-tema', t);
+      })();
+    </script>
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content="Política · Governo Lula 3 por dentro dos números" />
+    <meta property="og:description" content="Inflação, emprego, fome, juros, dívida e mais: cada número com selo de checagem e link para a fonte. Sem veredito." />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>Este site precisa de JavaScript para funcionar.</noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

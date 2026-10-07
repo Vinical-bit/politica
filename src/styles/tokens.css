@@ -1,0 +1,177 @@
+/*
+  tokens.css — todos os valores visuais do site "Política".
+  Tema padrão: pedra quente (claro). Tema escuro por <html data-tema="escuro">.
+  Nenhum componente tem cor, fonte, raio, sombra ou tempo digitado: tudo vem daqui.
+  Contraste verificado por scripts/contraste.mjs (WCAG AA).
+*/
+
+:root {
+  color-scheme: light;
+
+  /* ---------- Tipografia ---------- */
+  --fonte-titulo: 'Bricolage Grotesque', system-ui, sans-serif;
+  --fonte-texto: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --fonte-numero: 'Bricolage Grotesque', system-ui, sans-serif;
+  --peso-titulo: 500;
+  --peso-numero: 500;
+  --peso-forte: 700;
+
+  /* escala modular 1,25 sobre 17 px */
+  --texto-xs: 0.75rem;      /* 12 px: só selos e rótulos curtos */
+  --texto-sm: 0.875rem;     /* 14 px: legendas */
+  --texto-base: 1.0625rem;  /* 17 px: corpo */
+  --texto-lg: 1.328rem;
+  --texto-xl: 1.66rem;
+  --texto-2xl: 2.075rem;
+  --texto-3xl: clamp(2.75rem, 11vw, 5rem);
+  --altura-linha: 1.6;
+  --altura-linha-titulo: 1.12;
+  --espaco-letras-titulo: -0.02em;
+
+  /* ---------- Espaçamento ---------- */
+  --esp-1: 0.25rem;
+  --esp-2: 0.5rem;
+  --esp-3: 0.75rem;
+  --esp-4: 1rem;
+  --esp-5: 1.5rem;
+  --esp-6: 2rem;
+  --esp-7: 3rem;
+  --esp-8: 4.5rem;
+
+  /* ---------- Formas ---------- */
+  --raio-sm: 8px;
+  --raio-md: 14px;
+  --raio-lg: 22px;
+  --raio-pilula: 999px;
+  --traco: 1.5;              /* traço dos ícones, em unidades de 48 */
+  --traco-px: 1.5px;          /* bordas de destaque (Defesa/Crítica, selos) */
+  --borda-px: 1px;
+
+  /* ---------- Layout ---------- */
+  --largura-max: 72rem;
+  --largura-texto: 40rem;
+  --altura-navbar: 60px;
+  --gutter: 16px;
+  --alvo-toque: 44px;
+
+  /* ---------- Vidro ---------- */
+  --desfoque: 10px;
+
+  /* ---------- Movimento ---------- */
+  --tempo-rapido: 150ms;
+  --tempo-medio: 220ms;
+  --tempo-entrada: 250ms;
+  --tempo-serie: 800ms;       /* séries no tempo: a linha se desenha */
+  --curva: cubic-bezier(0.16, 1, 0.3, 1); /* ease-out */
+  --deslocamento-entrada: 8px;
+
+  /* ---------- Cores: tema claro (pedra quente) ---------- */
+  --fundo: #EFEBE3;
+  --superficie: #F8F6F1;
+  --superficie-2: #F2EEE7;
+  --texto: #2C2A26;
+  --texto-suave: #645F55;
+  --borda: #D8D2C6;            /* decorativa: separa cartões */
+  --borda-controle: #857E71;   /* botões, opções, campos: 3:1 */
+  --tinta: #2C2A26;            /* selos, ícones, foco */
+  --tinta-sobre: #F8F6F1;      /* texto sobre fundo de tinta */
+  --icone-preenchimento: #E3DCCD;
+  --curvas: #CBC3B2;
+  --vidro: rgba(248, 246, 241, 0.62);
+  --vidro-borda: rgba(120, 110, 95, 0.35);
+  --grafico: #7D776B;          /* barras e linhas neutras */
+  --grafico-ativo: #2C2A26;
+  --grade: #DDD7CB;
+  --selo-cinza-fundo: #D8D2C6;
+  --selo-cinza-texto: #4F4B43;
+  --foco: #2C2A26;
+  --veu: rgba(44, 42, 38, 0.38);
+  --sombra-1: 0 1px 2px rgba(44, 42, 38, 0.06), 0 6px 18px rgba(44, 42, 38, 0.05);
+  --sombra-2: 0 18px 48px rgba(44, 42, 38, 0.18);
+
+  /* Defesa (do governo) e Crítica (ao governo): as únicas cores de destaque */
+  --defesa-borda: #B5382B;
+  --defesa-fundo: #F3D9D4;
+  --defesa-texto: #6E1B12;
+  --critica-borda: #2F7A53;
+  --critica-fundo: #D9ECE0;
+  --critica-texto: #12472B;
+}
+
+/* Tema escuro escolhido (ou detectado pelo script do <head>) */
+:root[data-tema='escuro'] {
+  color-scheme: dark;
+  --fundo: #121315;
+  --superficie: #1C1E21;
+  --superficie-2: #24272B;
+  --texto: #ECE9E2;
+  --texto-suave: #A09B90;
+  --borda: #34373B;
+  --borda-controle: #74777C;
+  --tinta: #ECE9E2;
+  --tinta-sobre: #121315;
+  --icone-preenchimento: #2A2D31;
+  --curvas: #2A2C30;
+  --vidro: rgba(28, 30, 33, 0.62);
+  --vidro-borda: rgba(236, 233, 226, 0.14);
+  --grafico: #9A958B;
+  --grafico-ativo: #ECE9E2;
+  --grade: #2C2F33;
+  --selo-cinza-fundo: #34373B;
+  --selo-cinza-texto: #C9C4BA;
+  --foco: #ECE9E2;
+  --veu: rgba(0, 0, 0, 0.55);
+  --sombra-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --sombra-2: 0 18px 48px rgba(0, 0, 0, 0.55);
+  --defesa-borda: #E0675A;
+  --defesa-fundo: #3A1C19;
+  --defesa-texto: #F4B8B1;
+  --critica-borda: #4DB380;
+  --critica-fundo: #17321F;
+  --critica-texto: #A8E0C0;
+}
+
+/* Sem JavaScript: segue a preferência do sistema */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema]) {
+    color-scheme: dark;
+    --fundo: #121315;
+    --superficie: #1C1E21;
+    --superficie-2: #24272B;
+    --texto: #ECE9E2;
+    --texto-suave: #A09B90;
+    --borda: #34373B;
+    --borda-controle: #74777C;
+    --tinta: #ECE9E2;
+    --tinta-sobre: #121315;
+    --icone-preenchimento: #2A2D31;
+    --curvas: #2A2C30;
+    --vidro: rgba(28, 30, 33, 0.62);
+    --vidro-borda: rgba(236, 233, 226, 0.14);
+    --grafico: #9A958B;
+    --grafico-ativo: #ECE9E2;
+    --grade: #2C2F33;
+    --selo-cinza-fundo: #34373B;
+    --selo-cinza-texto: #C9C4BA;
+    --foco: #ECE9E2;
+    --veu: rgba(0, 0, 0, 0.55);
+    --sombra-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --sombra-2: 0 18px 48px rgba(0, 0, 0, 0.55);
+    --defesa-borda: #E0675A;
+    --defesa-fundo: #3A1C19;
+    --defesa-texto: #F4B8B1;
+    --critica-borda: #4DB380;
+    --critica-fundo: #17321F;
+    --critica-texto: #A8E0C0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --tempo-rapido: 0ms;
+    --tempo-medio: 0ms;
+    --tempo-entrada: 0ms;
+    --tempo-serie: 0ms;
+    --deslocamento-entrada: 0px;
+  }
+}

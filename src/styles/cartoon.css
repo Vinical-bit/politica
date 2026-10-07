@@ -818,3 +818,84 @@
   margin: 0;
   font-size: var(--texto-xs);
 }
+
+/* ---------- Abertura: a pergunta que abre o site ---------- */
+.abertura__titulo--pergunta {
+  font-size: clamp(2.6rem, 11vw, 4.6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.abertura__tensao {
+  display: grid;
+  gap: var(--esp-3);
+  margin: var(--esp-4) 0;
+}
+
+.abertura__fato {
+  display: grid;
+  gap: var(--esp-1);
+  margin: 0;
+  padding: var(--esp-3) var(--esp-4);
+  border: var(--borda-px) solid var(--borda);
+  border-radius: var(--raio-md);
+  background: var(--superficie);
+  box-shadow: var(--sombra-1);
+}
+
+.abertura__fato .numeral {
+  font-size: var(--texto-xl);
+  line-height: 1.1;
+}
+
+.abertura__virada {
+  margin: var(--esp-2) 0 0;
+  font-family: var(--fonte-titulo);
+  font-weight: var(--peso-titulo);
+  font-size: var(--texto-xl);
+}
+
+.parada.is-visivel .abertura__virada,
+.abertura .abertura__virada {
+  animation: carimbo-entra var(--tempo-camera) var(--curva-mola) both;
+  animation-delay: calc(var(--tempo-camera) * 0.6);
+}
+
+@media (min-width: 640px) {
+  .abertura__tensao {
+    grid-template-columns: 1fr 1fr;
+  }
+  .abertura__virada {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Próxima parada (gancho de "próximo episódio") ---------- */
+.proxima {
+  grid-column: 1 / -1;
+  margin-top: var(--esp-5);
+  padding: var(--esp-5);
+  border: var(--borda-px) solid var(--borda);
+  border-radius: var(--raio-lg);
+  background: var(--superficie);
+  box-shadow: calc(var(--carimbo-deslocamento) * 1.5) calc(var(--carimbo-deslocamento) * 1.5) 0 var(--cena-destaque),
+    calc(var(--carimbo-deslocamento) * 1.5 + 2px) calc(var(--carimbo-deslocamento) * 1.5 + 2px) 0 var(--carimbo);
+}
+
+.proxima__rotulo {
+  margin: 0 0 var(--esp-2);
+  font-size: var(--texto-sm);
+  font-weight: var(--peso-forte);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.proxima__pergunta {
+  margin: 0 0 var(--esp-4);
+  font-family: var(--fonte-titulo);
+  font-weight: var(--peso-titulo);
+  font-size: var(--texto-xl);
+  line-height: 1.2;
+  text-wrap: balance;
+}

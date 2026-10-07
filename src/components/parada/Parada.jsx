@@ -1,7 +1,8 @@
 import { memo, useEffect, useRef, useState } from 'react';
-import { TRILHA_POR_ID } from '../../data/index.js';
+import { TRILHA_POR_ID, PARADAS } from '../../data/index.js';
 import { useProgressoParada } from '../../hooks/useProgresso.js';
 import CenaRolagem from '../ilustracoes/CenaRolagem.jsx';
+import Icone from '../ilustracoes/Icones.jsx';
 import DadoComFonte from '../dados/DadoComFonte.jsx';
 import SaibaMais from '../dados/SaibaMais.jsx';
 import BarrasClicaveis from '../graficos/BarrasClicaveis.jsx';
@@ -76,6 +77,7 @@ function Parada({ parada, irPara }) {
   const exploradas = partes.filter((id) => parada.ilustracao.partes.some((p) => p.id === id));
   const { grandes, compactos } = separar(parada.dados || []);
   const tituloId = `${parada.id}-titulo`;
+  const proxima = PARADAS[PARADAS.findIndex((p) => p.id === parada.id) + 1];
 
   return (
     <section
@@ -202,6 +204,18 @@ function Parada({ parada, irPara }) {
           <Bloco titulo="Perguntas para levar" className="parada__abertas">
             <PerguntasAbertas perguntas={parada.perguntasAbertas} />
           </Bloco>
+        )}
+
+        {proxima && (
+          <aside className="proxima" aria-label="Próxima parada">
+            <p className="proxima__rotulo">
+              Próxima parada · {proxima.numero} de {PARADAS.length}
+            </p>
+            <p className="proxima__pergunta">{proxima.pergunta}</p>
+            <button type="button" className="botao botao--principal proxima__botao" onClick={() => irPara(proxima.id)}>
+              Continuar <Icone nome="seta" tamanho={20} />
+            </button>
+          </aside>
         )}
       </div>
     </section>

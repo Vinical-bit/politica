@@ -3,7 +3,7 @@ export const TRILHAS = [
   {
     id: 't1',
     numero: 1,
-    titulo: 'Os cinco problemas prometidos',
+    titulo: 'Entregou o que prometeu?',
     curto: 'Promessas',
     paradas: ['p01-promessa', 'p02-inflacao', 'p03-emprego-renda', 'p04-fome', 'p05-desalento', 'p06-endividamento'],
   },

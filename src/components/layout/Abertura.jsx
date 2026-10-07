@@ -10,14 +10,34 @@ function Abertura({ ultima, irPara }) {
   return (
     <section id="inicio" className="abertura" aria-labelledby="titulo-site">
       <div className="abertura__conteudo vidro">
-        <p className="abertura__edicao">Edição 1</p>
-        <h1 id="titulo-site" className="abertura__titulo">
-          Política
+        <p className="abertura__edicao">Política · Governo Lula 3 (2023–2026)</p>
+        <h1 id="titulo-site" className="abertura__titulo abertura__titulo--pergunta">
+          O governo Lula foi bom?
         </h1>
-        <p className="abertura__subtitulo">Governo Lula 3 por dentro dos números</p>
+        <p className="abertura__subtitulo">Depende do que você mede.</p>
+        <div className="abertura__tensao">
+          <p className="abertura__fato">
+            <span className="numeral">5,6%</span> O desemprego médio de 2025 foi o menor da série do IBGE.
+          </p>
+          <p className="abertura__fato">
+            <span className="numeral">71,7% → 82,5%</span> A dívida bruta, em % do PIB, voltou a subir (dez/2022 → jul/2026).
+          </p>
+          <p className="abertura__virada">Os dois são verdade.</p>
+        </div>
         <p className="abertura__video">
-          O balanço econômico do governo Lula de 2023 a 2026, tema por tema: o que os números mostram, o melhor argumento de cada lado e a fonte de cada dado.
+          São 14 perguntas, os números de cada uma e o melhor argumento dos dois lados. No fim, você escolhe a régua.
         </p>
+
+        <div className="abertura__acoes">
+          <button type="button" className="botao botao--principal" onClick={() => irPara('p01-promessa')}>
+            Começar pela primeira pergunta <Icone nome="setaBaixo" tamanho={20} />
+          </button>
+          {pUltima && pUltima.id !== 'p01-promessa' && (
+            <button type="button" className="botao botao--secundario" onClick={() => irPara(pUltima.id)}>
+              Continuar de onde parei <span className="botao__detalhe">(parada {pUltima.numero}: {pUltima.titulo})</span>
+            </button>
+          )}
+        </div>
 
         <div className="abertura__legenda">
           <h2 className="abertura__legenda-titulo">Como ler</h2>
@@ -61,16 +81,6 @@ function Abertura({ ultima, irPara }) {
           </span>
         </p>
 
-        <div className="abertura__acoes">
-          <button type="button" className="botao botao--principal" onClick={() => irPara('p01-promessa')}>
-            Começar <Icone nome="setaBaixo" tamanho={20} />
-          </button>
-          {pUltima && pUltima.id !== 'p01-promessa' && (
-            <button type="button" className="botao botao--secundario" onClick={() => irPara(pUltima.id)}>
-              Continuar de onde parei <span className="botao__detalhe">(parada {pUltima.numero}: {pUltima.titulo})</span>
-            </button>
-          )}
-        </div>
       </div>
     </section>
   );

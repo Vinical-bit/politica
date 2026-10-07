@@ -90,12 +90,17 @@ export default {
     },
     {
       id: 'p11-superavit',
-      rotulo: 'Superávit comercial acumulado (MDIC)',
-      valor: 'US$ 241 bi (2023–2025) × US$ 222 bi (2019–2022)',
-      selo: 'pendente',
-      ressalva: null, pendencia: 'Compara 3 anos com 4 anos. Na média anual, o Lula 3 fica com cerca de US$ 80 bi contra US$ 55 bi (cálculo nosso).',
-      saibaMais: '2023 foi recorde: US$ 98,8 bi, segundo o MDIC.',
-      fonte: inst('mdic', 'balança comercial'),
+      rotulo: 'Superávit comercial por ano (MDIC)',
+      valor: '≈ US$ 80 bi por ano (2023–2025) × ≈ US$ 55 bi por ano (2019–2022)',
+      selo: 'verificado',
+      ressalva: null,
+      saibaMais: {
+        paragrafos: [
+          'Somas: cerca de US$ 241 bi em três anos (2023: 98,8, o recorde; 2024: 74,6; 2025: 68,3) contra cerca de US$ 221 bi em quatro anos (2019: ≈ 48,0; 2020: ≈ 50,4; 2021: 61,4; 2022: ≈ 61,5). Por isso o site compara a média por ano.',
+          'O MDIC revisa os anos anteriores, então os valores mudam alguns décimos. Superávit maior não quer dizer, sozinho, economia melhor: ele também sobe quando o país importa menos.',
+        ],
+      },
+      fonte: esp('Forbes, superávit de US$ 68,3 bi em 2025 (dados do MDIC)', URLS.balanca2025),
     },
     {
       id: 'p11-dolar',

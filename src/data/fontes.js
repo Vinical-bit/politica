@@ -101,6 +101,7 @@ export const URLS = {
   commoditiesBM: 'https://www.worldbank.org/en/news/press-release/2025/10/28/commodity-markets-outlook-october-2025-press-release',
   aliquotaFazenda: 'https://forbes.com.br/forbes-money/2025/01/fazenda-projeta-aliquota-padrao-em-torno-de-28-com-reforma-tributaria-apos-sancao/',
   industriaTransformacao: 'https://horadopovo.com.br/pib-da-industria-de-transformacao-encolheu-13-em-2023/',
+  balanca2025: 'https://forbes.com.br/forbes-money/2026/01/brasil-tem-superavit-comercial-de-us-683-bi-em-2025/',
   pisaSerieAgenciaBrasil: 'https://agenciabrasil.ebc.com.br/educacao/noticia/2016-12/brasil-tem-primeira-queda-em-matematica-da-serie-historica-do-Pisa',
   pisa2018Poder360: 'https://www.poder360.com.br/brasil/apenas-2-dos-alunos-brasileiros-tem-nota-maxima-em-avaliacao-internacional/',
   pisa2022e2025QueroBolsa: 'https://querobolsa.com.br/revista/resultado-pisa-2025-brasil',

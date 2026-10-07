@@ -7,15 +7,18 @@ O site agora tem um único selo, **Verificado**. Todo número publicado precisa 
 2. **Achou um valor diferente:** corrija o `valor` (e o `numero`, se for gráfico) e faça o passo 1.
 3. **Não achou:** apague o dado do arquivo da parada.
 
-## Pendentes (3)
+## Pendentes (1)
 
 | Parada | Dado | Valor no site | O que falta |
 |---|---|---|---|
-| 8 | IPOs: Lula 3 × mandato anterior | 1 × 79 | A contagem está certa (B3: 5 + 28 + 46 + 0 = 79; Lula 3: 1, a Compass em mai/2026). Falta decidir o enquadramento: o boom de 2020–21 aconteceu com a Selic na mínima (2%), e a seca começou no fim de 2021, antes do Lula 3. |
-| 11 | Superávit comercial acumulado | US$ 241 bi × US$ 222 bi | Valores revisados do MDIC: 2019 ≈ 48,0 · 2020 ≈ 50,4 · 2021 61,4 · 2022 ≈ 61,5 (soma ≈ 221) · 2023 98,8 · 2024 74,6 · 2025 68,3 (soma ≈ 241). Compara 3 anos com 4; por ano, ≈ US$ 80 bi × ≈ US$ 55 bi. Fonte para conferir: [Comex Stat](https://comexstat.mdic.gov.br/pt/geral) e [balança comercial do MDIC](https://www.gov.br/mdic/pt-br/assuntos/comercio-exterior/estatisticas/balanca-comercial-brasileira-acumulado-do-ano). |
 | 13 | Comércio e serviços juntos | 71% dos empregos formais e 67,4% do PIB | Não achei a fonte primária. A provável é a [Agência Gov sobre a parceria MDIC/MEMP/CNC](https://agenciagov.ebc.com.br/noticias/202406/mdic-memp-e-cnc-fecham-parceria-para-impulsionar-o-setor-de-comercio-e-servicos) (bloqueada para leitura automática). |
 
-## Resolvido em 07/10/2026 (23 números)
+Enquanto estiver pendente, o número **não aparece no site** (a parada filtra `selo: 'pendente'`).
+
+## Resolvido em 07/10/2026 (25 números)
+
+- **IPOs 1 × 79:** mantido, com a contagem da B3 (inclui BDRs) e a nota de que o boom de 2020–21 aconteceu com a Selic em 2% e a seca começou no fim de 2021.
+- **Superávit comercial:** trocado pela média por ano (≈ US$ 80 bi × ≈ US$ 55 bi), com as somas (≈ 241 × ≈ 221) no "Saiba mais".
 
 - **Inflação em 12 meses:** 5,79% (dez/2022) → 4,22% (ago/2026), série 13522 do BC.
 - **IPCA do Lula 3:** trocado por 20,1% (projeção), com o Focus de 02/10/2026 (5,01% para 2026).

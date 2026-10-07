@@ -57,7 +57,11 @@ function Bloco({ titulo, children, className = '' }) {
   );
 }
 
+// Número sem checagem (selo 'pendente') não aparece no site publicado.
+const publicavel = (d) => d.selo !== 'pendente';
+
 function separar(dados) {
+  dados = dados.filter(publicavel);
   const grandes = dados.filter((d) => !d.compacto);
   const compactos = dados.filter((d) => d.compacto);
   return { grandes, compactos };
@@ -141,7 +145,7 @@ function Parada({ parada, irPara }) {
         {parada.placar && (
           <Bloco titulo={parada.placar.titulo} className="parada__placar">
             <div className="grade-dados grade-dados--placar">
-              {parada.placar.itens.map((d) => (
+              {parada.placar.itens.filter(publicavel).map((d) => (
                 <DadoComFonte key={d.id} dado={d} />
               ))}
             </div>
@@ -155,7 +159,7 @@ function Parada({ parada, irPara }) {
                 <div key={lado} className="choques__col">
                   <h4 className="choques__titulo">{parada.choques[lado].titulo}</h4>
                   <div className="grade-dados grade-dados--uma">
-                    {parada.choques[lado].itens.map((d) => (
+                    {parada.choques[lado].itens.filter(publicavel).map((d) => (
                       <DadoComFonte key={d.id} dado={d} comoTitulo="h5" />
                     ))}
                   </div>

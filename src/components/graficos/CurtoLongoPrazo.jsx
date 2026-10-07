@@ -6,7 +6,11 @@ import RotuloIlustracao from './RotuloIlustracao.jsx';
  * P10: gráfico curto × longo prazo (ilustração, sem escala).
  * Mouse: passar por cima mostra o longo prazo. Toque: alterna. Teclado: botões com aria-pressed.
  */
+const MOEDAS = 4; // por cano
+const QUEDA = 1.6; // segundos de cada queda
+
 function CurtoLongoPrazo({ grafico }) {
+  const [pausado, setPausado] = useState(false);
   const [modo, setModo] = useState('curto');
   const [hover, setHover] = useState(false);
   const [suspenso, setSuspenso] = useState(false);
@@ -47,19 +51,38 @@ function CurtoLongoPrazo({ grafico }) {
           if (!podeHover) escolher(modo === 'curto' ? 'longo' : 'curto');
         }}
       >
-        <svg viewBox="0 0 320 70" className="curto-longo__topo" aria-hidden="true">
-          <path d="M10 8 L70 22" className="cano" />
-          <path d="M310 8 L250 22" className="cano" />
-          <rect x="80" y="26" width="160" height="36" rx="8" className="caixa-economia" />
-          <text x="160" y="49" textAnchor="middle" className="caixa-economia__texto">
+        <svg viewBox="0 0 320 112" className={`curto-longo__topo${pausado ? ' is-pausado' : ''}`} aria-hidden="true">
+          {/* Canos que despejam dinheiro na economia */}
+          <path d="M8 10 L84 34" className="cano" />
+          <path d="M312 10 L236 34" className="cano" />
+          {[
+            { x: 92, lado: 'e' },
+            { x: 228, lado: 'd' },
+          ].map(({ x, lado }) =>
+            Array.from({ length: MOEDAS }, (_, i) => {
+              // Com movimento reduzido, as moedas ficam paradas no meio da queda
+              const y = reduzir ? 44 + (i % 2) * 12 : 38;
+              const dx = reduzir ? (i % 2 ? 9 : -9) : 0;
+              return (
+                <g
+                  key={`${lado}${i}`}
+                  className={`moeda-fluxo${reduzir ? '' : ' is-animada'}`}
+                  style={reduzir ? undefined : { animationDelay: `${(i * QUEDA) / MOEDAS + (lado === 'd' ? QUEDA / (2 * MOEDAS) : 0)}s` }}
+                >
+                  <g transform={`translate(${x + dx} ${y})`}>
+                    <circle r="9" />
+                    <text y="4" textAnchor="middle">
+                      $
+                    </text>
+                  </g>
+                </g>
+              );
+            }),
+          )}
+          <rect x="70" y="72" width="180" height="36" rx="8" className="caixa-economia" />
+          <text x="160" y="95" textAnchor="middle" className="caixa-economia__texto">
             Economia
           </text>
-          {[0, 1, 2].map((i) => (
-            <circle key={i} cx={78 + i * 6} cy="22" r="5" className={`moeda-caindo${reduzir ? '' : ' is-animada'}`} style={{ animationDelay: `${i * 0.5}s` }} />
-          ))}
-          {[0, 1, 2].map((i) => (
-            <circle key={`d${i}`} cx={242 - i * 6} cy="22" r="5" className={`moeda-caindo${reduzir ? '' : ' is-animada'}`} style={{ animationDelay: `${0.25 + i * 0.5}s` }} />
-          ))}
         </svg>
         <p className="curto-longo__estado" aria-live="polite">
           {visao === 'curto' ? 'Curto prazo: segundo esse argumento, tudo parece melhorar.' : 'Longo prazo: segundo esse argumento, a conta chega.'}
@@ -85,6 +108,15 @@ function CurtoLongoPrazo({ grafico }) {
             );
           })}
         </ul>
+        {!reduzir && (
+          <button type="button" className="tarifa__pausa curto-longo__pausa" aria-pressed={pausado} onClick={(e) => {
+              e.stopPropagation();
+              setPausado((v) => !v);
+            }}
+          >
+            {pausado ? 'Continuar o fluxo' : 'Pausar o fluxo'}
+          </button>
+        )}
         {!podeHover && <p className="grafico__dica">Toque no gráfico para alternar.</p>}
       </div>
       <p className="grafico__nota">

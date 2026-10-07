@@ -145,3 +145,4 @@ Teste de uma estética "tipo vídeo" em cartoon editorial. Se não ficar boa, ba
   - Um texto separa quanto da aproximação veio da queda da OCDE e quanto da subida do Brasil: matemática 82% × 18%, leitura 66% × 34%, ciências 47% × 53%.
   - A linha da OCDE usa só os dois pontos conferidos (ver `CHECAGEM.md`).
 - **Vermelho do longo prazo:** mantido. O autor considera aceitável a proximidade com o vermelho da Defesa nesse caso.
+- **Curto × longo prazo:** as bolinhas viraram moedas com "$" caindo dos canos na caixa "Economia", em fluxo contínuo (4 por cano, 1,6 s cada queda), com botão "Pausar o fluxo". Com "reduzir movimento", as moedas ficam paradas no meio da queda.

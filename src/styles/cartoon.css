@@ -710,3 +710,58 @@
   stroke: var(--cena-rosto);
   stroke-width: 1.6px;
 }
+
+/* ---------- Curto × longo: fluxo de moedas caindo dos canos ---------- */
+.moeda-fluxo circle {
+  fill: var(--cena-destaque);
+  stroke: var(--tinta);
+  stroke-width: 2px;
+}
+
+.moeda-fluxo text {
+  fill: var(--cena-destaque-texto);
+  font-family: var(--fonte-numero);
+  font-weight: var(--peso-forte);
+  font-size: 11px;
+}
+
+.moeda-fluxo.is-animada {
+  opacity: 0;
+  /* escala em torno da própria moeda, não da origem do desenho */
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: moeda-flui var(--tempo-moeda) var(--curva-queda) infinite;
+}
+
+.curto-longo__topo.is-pausado .moeda-fluxo.is-animada {
+  animation-play-state: paused;
+}
+
+/* Sai do cano, cai em "gravidade" e some ao entrar na caixa */
+@keyframes moeda-flui {
+  0% {
+    transform: translateY(-4px) scale(0.7);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(38px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+.curto-longo__pausa {
+  display: flex;
+  margin: var(--esp-2) auto 0;
+}
+
+.grafico--curto-longo .cano {
+  stroke-width: 10px;
+  opacity: 1;
+}

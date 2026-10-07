@@ -45,7 +45,14 @@ O site agora tem um único selo, **Verificado**. Todo número publicado precisa 
 
 ---
 
+## Para ampliar (não é pendente: não aparece no site)
+
+- **Média da OCDE no PISA, edições intermediárias (2000–2022).** O gráfico de referência ("média dos mesmos 23 países da OCDE") mostra a queda edição a edição, por exemplo matemática 496 em 2018 → 480 em 2022. Esses pontos não foram achados numa fonte primária. Por isso o site mostra só 2006 e 2025, que batem com o Inep. Caso apareça a tabela da OCDE/Inep com a série dos 23 países, dá para completar a linha.
+- **Matemática do Brasil em 2000 (334).** Em 2000 matemática não era a área principal, e a série comparável começa em 2003. Ficou de fora.
+
 ## Resolvido nesta rodada
+
+- **Série do PISA do Brasil (07/10/2026, ramificação cartoon):** leitura 2000–2025, matemática 2003–2025 e ciências 2006–2025, conferidas na Agência Brasil (2000–2015), no Poder360 (2015 e 2018), no Quero Bolsa (2022 e 2025) e no Inep (2025). A média da OCDE de 2006 e 2025 sai das distâncias informadas pelo Inep (102/131/113 → 58/92/77 pontos).
 
 - **Dólar (07/10/2026, ramificação cartoon):** trocado por médias anuais da série 3698 do Banco Central (dólar de venda, média mensal): R$ 5,16 em 2022 e R$ 5,15 em 2026 (jan. a ago.). Entrou também o gráfico 2018–2026. A foto de um dia (R$ 5,21 → R$ 5,15) saiu.
 

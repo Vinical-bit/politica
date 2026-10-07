@@ -9,6 +9,7 @@ import LinhaPontosChave from '../graficos/LinhaPontosChave.jsx';
 import CurtoLongoPrazo from '../graficos/CurtoLongoPrazo.jsx';
 import MapaTarifa from '../graficos/MapaTarifa.jsx';
 import ReguaAB from '../graficos/ReguaAB.jsx';
+import SeriesPisa from '../graficos/SeriesPisa.jsx';
 import CartoesDebate from './CartoesDebate.jsx';
 import QuadroMede from './QuadroMede.jsx';
 import Quiz from './Quiz.jsx';
@@ -20,6 +21,7 @@ const GRAFICOS = {
   selic: LinhaPontosChave,
   curtoLongo: CurtoLongoPrazo,
   tarifa: MapaTarifa,
+  pisa: SeriesPisa,
 };
 
 /** Liga a classe de entrada uma única vez, quando a parada aparece na tela. */

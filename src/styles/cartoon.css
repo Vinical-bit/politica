@@ -599,3 +599,114 @@
     grid-column: 1 / -1;
   }
 }
+
+/* ---------- PISA: Brasil × OCDE ---------- */
+.pisa__linha {
+  fill: none;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.pisa__linha--brasil {
+  stroke: var(--tinta);
+  stroke-width: 3px;
+}
+
+.pisa__linha--ocde {
+  stroke: var(--cena-alerta);
+  stroke-width: 3px;
+  stroke-dasharray: 7 6;
+}
+
+.pisa__ponto--ocde .ponto__marca {
+  fill: var(--cena-alerta);
+}
+
+.pisa__nome {
+  font-family: var(--fonte-titulo);
+  font-weight: var(--peso-titulo);
+  font-size: 13px;
+  fill: var(--texto);
+}
+
+.pisa__chave path {
+  fill: none;
+  stroke: var(--texto-suave);
+  stroke-width: 1.5px;
+}
+
+.pisa__chave text {
+  font-family: var(--fonte-numero);
+  font-size: 13px;
+  fill: var(--texto);
+  font-variant-numeric: tabular-nums;
+}
+
+.pisa__conta {
+  margin-top: var(--esp-3);
+  padding: var(--esp-3) var(--esp-4);
+  border: var(--borda-px) solid var(--borda);
+  border-radius: var(--raio-md);
+  background: var(--superficie-2);
+}
+
+.pisa__conta p {
+  margin: 0;
+}
+
+.pisa__proporcao {
+  margin-top: var(--esp-2) !important;
+  color: var(--texto-suave);
+  font-size: var(--texto-sm);
+}
+
+/* O gráfico do PISA ocupa a largura toda em tela larga */
+@media (min-width: 960px) {
+  .parada__grafico:has(.grafico--pisa) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Família (cena de pessoas em cartoon) ---------- */
+.familia path,
+.familia circle {
+  stroke: var(--tinta);
+  stroke-width: 2.5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.familia__telhado {
+  fill: none;
+}
+
+.familia__pele--a {
+  fill: var(--cena-pele-a);
+}
+
+.familia__pele--b {
+  fill: var(--cena-pele-b);
+}
+
+.familia__roupa--a {
+  fill: var(--cena-destaque);
+}
+
+.familia__roupa--b {
+  fill: var(--cena-colina);
+}
+
+.familia__roupa--c {
+  fill: var(--cena-roupa-c);
+}
+
+.familia .familia__olho {
+  fill: var(--cena-rosto);
+  stroke: none;
+}
+
+.familia .familia__boca {
+  fill: none;
+  stroke: var(--cena-rosto);
+  stroke-width: 1.6px;
+}

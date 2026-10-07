@@ -34,6 +34,30 @@ function posicoes(n) {
   });
 }
 
+/** Família em cartoon (sem traços realistas): dois adultos e uma criança sob um telhado. */
+function Familia({ cx, cy }) {
+  const pessoa = (dx, dy, r, larg, alt, pele, roupa, k) => (
+    <g key={k}>
+      <path
+        d={`M${cx + dx - larg / 2} ${cy + dy + alt} V${cy + dy + r + 6} Q${cx + dx - larg / 2} ${cy + dy + r} ${cx + dx} ${cy + dy + r} Q${cx + dx + larg / 2} ${cy + dy + r} ${cx + dx + larg / 2} ${cy + dy + r + 6} V${cy + dy + alt} Z`}
+        className={`familia__roupa familia__roupa--${roupa}`}
+      />
+      <circle cx={cx + dx} cy={cy + dy} r={r} className={`familia__pele familia__pele--${pele}`} />
+      <circle cx={cx + dx - r * 0.35} cy={cy + dy - r * 0.1} r={r * 0.12} className="familia__olho" />
+      <circle cx={cx + dx + r * 0.35} cy={cy + dy - r * 0.1} r={r * 0.12} className="familia__olho" />
+      <path d={`M${cx + dx - r * 0.35} ${cy + dy + r * 0.3} Q${cx + dx} ${cy + dy + r * 0.62} ${cx + dx + r * 0.35} ${cy + dy + r * 0.3}`} className="familia__boca" />
+    </g>
+  );
+  return (
+    <g className="familia">
+      <path d={`M${cx - 40} ${cy - 22} L${cx} ${cy - 46} L${cx + 40} ${cy - 22}`} className="familia__telhado" />
+      {pessoa(-21, -12, 10, 24, 50, 'a', 'a', 'p1')}
+      {pessoa(21, -14, 10.5, 25, 52, 'b', 'b', 'p2')}
+      {pessoa(0, 8, 7.5, 17, 30, 'b', 'c', 'p3')}
+    </g>
+  );
+}
+
 /** Câmera: leva o ponto (x, y) para o centro do palco com o zoom z.
  *  Sem limite nas bordas: o cenário é desenhado bem além do quadro,
  *  então a parte (e o balão) sempre ficam no centro, nunca cortados. */
@@ -162,9 +186,13 @@ function CenaRolagem({ ilustracao, exploradas, onExplorar }) {
               <g className="cena__heroi" aria-hidden="true">
                 <ellipse cx={C.x} cy={C.y + 50} rx="46" ry="9" className="cena__sombra" />
                 <circle cx={C.x} cy={C.y} r="50" className="cena__heroi-fundo" />
-                <g transform={`translate(${C.x - 36} ${C.y - 36}) scale(3)`} className="desenho cena__traco cena__heroi-desenho">
-                  <DesenhoIcone nome={icoCena} />
-                </g>
+                {ilustracao.cena === 'familia' ? (
+                  <Familia cx={C.x} cy={C.y} />
+                ) : (
+                  <g transform={`translate(${C.x - 36} ${C.y - 36}) scale(3)`} className="desenho cena__traco cena__heroi-desenho">
+                    <DesenhoIcone nome={icoCena} />
+                  </g>
+                )}
               </g>
 
               {partes.map((p, i) => {

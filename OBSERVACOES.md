@@ -136,3 +136,12 @@ Teste de uma estética "tipo vídeo" em cartoon editorial. Se não ficar boa, ba
 - **Tarifa:** as moedas correm sem parar pela rota, como um fluxo, e há um botão "Pausar o fluxo" (WCAG 2.2.2). Com "reduzir movimento", as moedas ficam paradas.
 - **Dólar (p11):** entrou o gráfico com a média anual de 2018 a 2026, com faixas "Bolsonaro" e "Lula 3". A fonte é a série 3698 do Banco Central. O cartão do dólar, que estava pendente (foto de um dia), virou média anual verificada: R$ 5,16 em 2022 e R$ 5,15 em 2026 (jan. a ago.). Os pendentes caíram de 27 para 26.
 - **Gráficos de linha:** passaram a aceitar `faixas` (períodos) e `mostrarValores` (valor fixo em cada ponto).
+
+### 3ª rodada (07/10/2026)
+
+- **Pessoas em cartoon:** a cena da família (p10, "A analogia da família") ganhou dois adultos e uma criança sob um telhado. São figuras simples, com olhos de ponto e sorriso, em dois tons de pele (`--cena-pele-a`/`-b`). Os outros desenhos continuam sem pessoas, como pedido ("só em alguns exemplos").
+- **PISA (p12):** novo gráfico Brasil × OCDE por área, com botões Leitura, Matemática e Ciências.
+  - As chaves marcam a distância em 2006 e em 2025.
+  - Um texto separa quanto da aproximação veio da queda da OCDE e quanto da subida do Brasil: matemática 82% × 18%, leitura 66% × 34%, ciências 47% × 53%.
+  - A linha da OCDE usa só os dois pontos conferidos (ver `CHECAGEM.md`).
+- **Vermelho do longo prazo:** mantido. O autor considera aceitável a proximidade com o vermelho da Defesa nesse caso.

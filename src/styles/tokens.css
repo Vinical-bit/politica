@@ -102,6 +102,10 @@
   --cena-chao-2: #DDBF85;
   --cena-destaque: #F2C14E;
   --cena-destaque-texto: #2C2A26;
+  --cena-pele-a: #EDC29B;
+  --cena-pele-b: #A86B45;
+  --cena-roupa-c: #8FB8D9;
+  --cena-rosto: #2C2A26;        /* olhos e boca sobre a pele: igual nos dois temas */
   --cena-alerta: #D2452A;       /* "a conta chega": vermelho-alaranjado, distinto do vermelho da Defesa */
   --cena-adereco: #FBF3DE;
   --cena-sombra: rgba(44, 42, 38, 0.16);

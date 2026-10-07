@@ -1,7 +1,7 @@
 import { memo, useEffect, useRef, useState } from 'react';
 import { TRILHA_POR_ID } from '../../data/index.js';
 import { useProgressoParada } from '../../hooks/useProgresso.js';
-import IlustracaoClicavel from '../ilustracoes/IlustracaoClicavel.jsx';
+import CenaRolagem from '../ilustracoes/CenaRolagem.jsx';
 import DadoComFonte from '../dados/DadoComFonte.jsx';
 import SaibaMais from '../dados/SaibaMais.jsx';
 import BarrasClicaveis from '../graficos/BarrasClicaveis.jsx';
@@ -81,6 +81,9 @@ function Parada({ parada, irPara }) {
       <div className="parada__conteudo">
         <header className="parada__cabecalho">
           <p className="parada__sobretitulo">
+            <span className="parada__episodio" aria-hidden="true">
+              {String(parada.numero).padStart(2, '0')}
+            </span>
             Trilha {trilha.numero} · Parada {parada.numero} de 14
           </p>
           <h2 id={tituloId} className="parada__titulo" tabIndex={-1}>
@@ -95,13 +98,14 @@ function Parada({ parada, irPara }) {
         </div>
 
         <Bloco titulo="Explore" className="parada__explore">
+          <p className="cena__instrucao">Role a página: a cena anda junto.</p>
           <p className="contador" aria-live="polite">
             <span className="contador__numero">
               {exploradas.length} de {total}
             </span>{' '}
             partes exploradas
           </p>
-          <IlustracaoClicavel ilustracao={parada.ilustracao} exploradas={exploradas} onExplorar={marcarParte} />
+          <CenaRolagem ilustracao={parada.ilustracao} exploradas={exploradas} onExplorar={marcarParte} />
         </Bloco>
 
         {(parada.graficos || []).map((g) => {

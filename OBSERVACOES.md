@@ -109,3 +109,19 @@ A lista atual está em `CHECAGEM.md`.
 - **Lighthouse (celular, `npm run preview`):** Desempenho 95, Acessibilidade 100, Boas práticas 100, SEO 100 (FCP 1,8–1,9 s; LCP 2,0 s; TBT cerca de 200 ms; CLS 0,034).
 - **Reduzir movimento:** nenhuma animação rodando e nenhuma seção escondida.
 - **Requisições externas:** nenhuma durante a navegação.
+
+## 6. Ramificação `cartoon` (experimento)
+
+Teste de uma estética "tipo vídeo" em cartoon editorial. Se não ficar boa, basta voltar para `main`.
+
+- **Cena que anda com a rolagem** (`CenaRolagem.jsx`, no lugar de `IlustracaoClicavel` no bloco "Explore"). O palco fica preso no topo e cada parte vira um passo de texto. Ao rolar, a câmera dá zoom na parte, que pula, ganha um balão com o nome e é marcada como explorada. Uma linha do tempo, como a barra de um vídeo, mostra o avanço; cada marca é um botão que leva ao passo.
+- **Cenário:** céu, sol, nuvens, colinas e chão em cores chapadas com contorno de tinta. No tema escuro vira uma cena noturna. O fundo anda menos que o primeiro plano (paralaxe). Sem pessoas e sem rostos.
+- **Traço e superfícies:**
+  - Contorno de 2 px em todos os cartões (`--borda` virou cor de tinta) e sombra dura deslocada ("carimbo").
+  - Barras chapadas em mostarda com contorno.
+  - "A pergunta" virou um balão de fala, e o número da parada virou uma cartela de episódio.
+- **Novos tokens:** `--cena-*`, `--carimbo`, `--tempo-camera` (700 ms), `--curva-mola`, `--traco-cena`.
+- **Movimento:** fora as transições de 150–250 ms do prompt 2, a câmera anda em 700 ms e há um "pulo" de mola na entrada. Tudo isso está ligado à rolagem: nada se move sozinho. Com "reduzir movimento", a câmera muda sem animação.
+- **Acessibilidade:** todo o conteúdo está nos passos, em texto comum. O palco é uma imagem decorativa (`role="img"` com descrição). O contraste continua AA nos dois temas e o Lighthouse dá acessibilidade 100.
+- **Desempenho:** o Lighthouse móvel caiu de 95 para 91.
+- **Dados:** nenhum dado foi alterado.

@@ -43,9 +43,11 @@
   --raio-md: 14px;
   --raio-lg: 22px;
   --raio-pilula: 999px;
-  --traco: 1.5;              /* traço dos ícones, em unidades de 48 */
-  --traco-px: 1.5px;          /* bordas de destaque (Defesa/Crítica, selos) */
-  --borda-px: 1px;
+  --traco: 2.25;             /* cartoon: traço de nanquim mais grosso */
+  --traco-px: 2px;            /* bordas de destaque (Defesa/Crítica, selos) */
+  --borda-px: 2px;            /* cartoon: todo cartão tem contorno de tinta */
+  --traco-cena: 2.5;          /* contorno dos desenhos da cena */
+  --carimbo-deslocamento: 4px; /* sombra dura, deslocada, sem desfoque */
 
   /* ---------- Layout ---------- */
   --largura-max: 72rem;
@@ -64,6 +66,8 @@
   --tempo-serie: 800ms;       /* séries no tempo: a linha se desenha */
   --curva: cubic-bezier(0.16, 1, 0.3, 1); /* ease-out */
   --deslocamento-entrada: 8px;
+  --tempo-camera: 700ms;      /* cartoon: a câmera da cena anda entre partes */
+  --curva-mola: cubic-bezier(0.34, 1.56, 0.64, 1); /* pulo de desenho animado */
 
   /* ---------- Cores: tema claro (pedra quente) ---------- */
   --fundo: #EFEBE3;
@@ -71,7 +75,7 @@
   --superficie-2: #F2EEE7;
   --texto: #2C2A26;
   --texto-suave: #645F55;
-  --borda: #D8D2C6;            /* decorativa: separa cartões */
+  --borda: #2C2A26;            /* cartoon: contorno de tinta */
   --borda-controle: #857E71;   /* botões, opções, campos: 3:1 */
   --tinta: #2C2A26;            /* selos, ícones, foco */
   --tinta-sobre: #F8F6F1;      /* texto sobre fundo de tinta */
@@ -86,8 +90,21 @@
   --selo-cinza-texto: #4F4B43;
   --foco: #2C2A26;
   --veu: rgba(44, 42, 38, 0.38);
-  --sombra-1: 0 1px 2px rgba(44, 42, 38, 0.06), 0 6px 18px rgba(44, 42, 38, 0.05);
+  --sombra-1: var(--carimbo-deslocamento) var(--carimbo-deslocamento) 0 var(--carimbo);
   --sombra-2: 0 18px 48px rgba(44, 42, 38, 0.18);
+
+  /* ---------- Cartoon: cena e carimbo ---------- */
+  --cena-ceu: #CFE3EA;
+  --cena-sol: #F2C14E;
+  --cena-nuvem: #FBF9F4;
+  --cena-colina: #C4C9E4;
+  --cena-chao: #E9D3A3;
+  --cena-chao-2: #DDBF85;
+  --cena-destaque: #F2C14E;
+  --cena-destaque-texto: #2C2A26;
+  --cena-adereco: #FBF3DE;
+  --cena-sombra: rgba(44, 42, 38, 0.16);
+  --carimbo: #2C2A26;
 
   /* Defesa (do governo) e Crítica (ao governo): as únicas cores de destaque */
   --defesa-borda: #B5382B;
@@ -106,7 +123,7 @@
   --superficie-2: #24272B;
   --texto: #ECE9E2;
   --texto-suave: #A09B90;
-  --borda: #34373B;
+  --borda: #8E8A82;
   --borda-controle: #74777C;
   --tinta: #ECE9E2;
   --tinta-sobre: #121315;
@@ -121,7 +138,7 @@
   --selo-cinza-texto: #C9C4BA;
   --foco: #ECE9E2;
   --veu: rgba(0, 0, 0, 0.55);
-  --sombra-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --sombra-1: var(--carimbo-deslocamento) var(--carimbo-deslocamento) 0 var(--carimbo);
   --sombra-2: 0 18px 48px rgba(0, 0, 0, 0.55);
   --defesa-borda: #E0675A;
   --defesa-fundo: #3A1C19;
@@ -129,6 +146,17 @@
   --critica-borda: #4DB380;
   --critica-fundo: #17321F;
   --critica-texto: #A8E0C0;
+  --cena-ceu: #1D2638;
+  --cena-sol: #E9E1C2;
+  --cena-nuvem: #2C3448;
+  --cena-colina: #2A3150;
+  --cena-chao: #3B3427;
+  --cena-chao-2: #4A4130;
+  --cena-destaque: #D9A43A;
+  --cena-destaque-texto: #121315;
+  --cena-adereco: #2A2D31;
+  --cena-sombra: rgba(0, 0, 0, 0.35);
+  --carimbo: #000000;
 }
 
 /* Sem JavaScript: segue a preferência do sistema */
@@ -140,7 +168,7 @@
     --superficie-2: #24272B;
     --texto: #ECE9E2;
     --texto-suave: #A09B90;
-    --borda: #34373B;
+    --borda: #8E8A82;
     --borda-controle: #74777C;
     --tinta: #ECE9E2;
     --tinta-sobre: #121315;
@@ -155,7 +183,7 @@
     --selo-cinza-texto: #C9C4BA;
     --foco: #ECE9E2;
     --veu: rgba(0, 0, 0, 0.55);
-    --sombra-1: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --sombra-1: var(--carimbo-deslocamento) var(--carimbo-deslocamento) 0 var(--carimbo);
     --sombra-2: 0 18px 48px rgba(0, 0, 0, 0.55);
     --defesa-borda: #E0675A;
     --defesa-fundo: #3A1C19;
@@ -163,6 +191,18 @@
     --critica-borda: #4DB380;
     --critica-fundo: #17321F;
     --critica-texto: #A8E0C0;
+    --cena-ceu: #1D2638;
+    --cena-sol: #E9E1C2;
+    --cena-nuvem: #2C3448;
+    --cena-colina: #2A3150;
+    --cena-chao: #3B3427;
+    --cena-chao-2: #4A4130;
+    --cena-destaque: #D9A43A;
+    --cena-destaque-texto: #121315;
+  --cena-destaque-texto: #121315;
+    --cena-adereco: #2A2D31;
+    --cena-sombra: rgba(0, 0, 0, 0.35);
+    --carimbo: #000000;
   }
 }
 
@@ -172,6 +212,7 @@
     --tempo-medio: 0ms;
     --tempo-entrada: 0ms;
     --tempo-serie: 0ms;
+    --tempo-camera: 0ms;
     --deslocamento-entrada: 0px;
   }
 }

@@ -1,0 +1,480 @@
+/*
+  cartoon.css — ramificação "cartoon": cenas que andam com a rolagem e
+  traço de cartoon editorial. Carregado por último; os valores vêm de tokens.css.
+*/
+
+/* ---------- Abertura da parada como cartela de episódio ---------- */
+.parada__sobretitulo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-2);
+  padding: 2px var(--esp-3) 2px 2px;
+  color: var(--texto);
+  box-shadow: var(--sombra-1);
+}
+
+.parada__episodio {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.1em;
+  height: 2.1em;
+  padding: 0 0.3em;
+  border-radius: var(--raio-pilula);
+  background: var(--cena-destaque);
+  color: var(--cena-destaque-texto);
+  font-family: var(--fonte-numero);
+  font-weight: var(--peso-numero);
+  letter-spacing: 0;
+  border: var(--traco-px) solid var(--carimbo);
+}
+
+.parada__titulo {
+  font-size: clamp(2.1rem, 9vw, 3.4rem);
+  line-height: 1.02;
+}
+
+.parada.is-visivel .parada__titulo {
+  animation: carimbo-entra var(--tempo-camera) var(--curva-mola) both;
+}
+
+@keyframes carimbo-entra {
+  from {
+    transform: scale(0.92) rotate(-1.5deg);
+    opacity: 0;
+  }
+}
+
+/* A pergunta vira balão de fala */
+.parada__pergunta {
+  position: relative;
+  border-radius: var(--raio-lg) var(--raio-lg) var(--raio-lg) var(--raio-sm);
+}
+
+.parada__pergunta::after {
+  content: '';
+  position: absolute;
+  left: 28px;
+  bottom: calc(-1 * 16px);
+  width: 22px;
+  height: 16px;
+  background: var(--superficie);
+  border-left: var(--borda-px) solid var(--borda);
+  border-bottom: var(--borda-px) solid var(--borda);
+  transform: skewX(-35deg);
+  transform-origin: top left;
+  filter: drop-shadow(var(--carimbo-deslocamento) var(--carimbo-deslocamento) 0 var(--carimbo));
+}
+
+/* Cartões e botões: contorno de tinta + sombra de carimbo que "afunda" ao tocar */
+.botao,
+.saiba-mais__botao,
+.quiz__opcao,
+.alternador__botao,
+.navbar__paradas {
+  transition:
+    transform var(--tempo-rapido) var(--curva),
+    box-shadow var(--tempo-rapido) var(--curva);
+}
+
+.botao:active,
+.saiba-mais__botao:active,
+.quiz__opcao:active,
+.navbar__paradas:active {
+  transform: translate(2px, 2px);
+}
+
+.quiz__opcao {
+  box-shadow: 3px 3px 0 var(--carimbo);
+}
+
+.quiz__opcao:active {
+  box-shadow: 1px 1px 0 var(--carimbo);
+}
+
+/* Barras e linhas: cor chapada com contorno */
+.barra__ret {
+  fill: var(--cena-destaque);
+  stroke: var(--tinta);
+  stroke-width: 2px;
+}
+
+.barra.is-ativa .barra__ret,
+.barra.is-fixada .barra__ret {
+  fill: var(--grafico-ativo);
+}
+
+.linha__traco {
+  stroke-width: 3px;
+}
+
+.curto-longo__barra {
+  fill: var(--cena-destaque);
+  stroke: var(--tinta);
+  stroke-width: 1.5px;
+}
+
+/* ---------- Cena que anda com a rolagem ---------- */
+.parada__explore {
+  /* o palco gruda no topo; o bloco não pode cortar o conteúdo */
+  overflow: visible;
+}
+
+.cena__instrucao {
+  font-size: var(--texto-sm);
+  color: var(--texto-suave);
+  margin: calc(-1 * var(--esp-2)) 0 var(--esp-2);
+}
+
+.cena {
+  margin: 0;
+}
+
+.cena .ilustracao__titulo {
+  margin-bottom: var(--esp-3);
+}
+
+.cena__palco {
+  position: sticky;
+  top: calc(var(--altura-navbar) + env(safe-area-inset-top, 0px) + var(--esp-2));
+  z-index: 2;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding-bottom: var(--esp-2);
+  background: linear-gradient(var(--fundo) 85%, transparent);
+}
+
+.cena__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 46svh;
+  border-radius: var(--raio-lg);
+  box-shadow: var(--sombra-1);
+  background: var(--cena-ceu);
+}
+
+.cena__camada {
+  transform-origin: 0 0;
+  transition: transform var(--tempo-camera) var(--curva);
+  will-change: transform;
+}
+
+.cena__moldura {
+  fill: none;
+  stroke: var(--tinta);
+  stroke-width: 2.5px;
+}
+
+.cena__ceu {
+  fill: var(--cena-ceu);
+}
+
+.cena__sol circle {
+  fill: var(--cena-sol);
+  stroke: var(--tinta);
+  stroke-width: 2.5px;
+}
+
+.cena__sol line {
+  stroke: var(--tinta);
+  stroke-width: 2.5px;
+  stroke-linecap: round;
+}
+
+.cena__nuvem {
+  fill: var(--cena-nuvem);
+  stroke: var(--tinta);
+  stroke-width: 2.5px;
+  stroke-linejoin: round;
+}
+
+.cena__colina {
+  fill: var(--cena-colina);
+  stroke: var(--tinta);
+  stroke-width: 2.5px;
+}
+
+.cena__chao {
+  fill: var(--cena-chao);
+  stroke: var(--tinta);
+  stroke-width: 2.5px;
+}
+
+.cena__chao-risco {
+  fill: none;
+  stroke: var(--cena-chao-2);
+  stroke-width: 3px;
+  stroke-linecap: round;
+}
+
+.cena__sombra {
+  fill: var(--cena-sombra);
+}
+
+.cena__ligacao {
+  fill: none;
+  stroke: var(--tinta);
+  stroke-width: 2px;
+  stroke-dasharray: 2 6;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+
+.cena__ligacao.is-ativa {
+  opacity: 1;
+  stroke-dasharray: none;
+}
+
+.cena .cena__traco * {
+  stroke-width: calc(var(--traco-cena) * 1px);
+}
+
+.cena__heroi-fundo {
+  fill: var(--cena-adereco);
+  stroke: var(--tinta);
+  stroke-width: 2.5px;
+}
+
+.cena__heroi-desenho {
+  color: var(--tinta);
+}
+
+.cena .cena__heroi-desenho .ic-p {
+  fill: var(--cena-destaque);
+}
+
+/* O objeto central "respira" uma vez quando a parada aparece */
+.parada.is-visivel .cena__heroi {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: pulo var(--tempo-camera) var(--curva-mola) both;
+}
+
+@keyframes pulo {
+  0% {
+    transform: translateY(14px) scale(0.85, 0.7);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-6px) scale(0.97, 1.06);
+    opacity: 1;
+  }
+}
+
+.cena__parte-fundo {
+  fill: var(--superficie);
+  stroke: var(--tinta);
+  stroke-width: 2.5px;
+}
+
+.cena__parte .cena__traco {
+  color: var(--tinta);
+}
+
+.cena .cena__parte .ic-p {
+  fill: var(--cena-adereco);
+}
+
+.cena__parte-corpo {
+  transition: transform var(--tempo-medio) var(--curva-mola);
+}
+
+.cena__parte.is-ativa .cena__parte-corpo {
+  transform: scale(1.18) rotate(-4deg);
+}
+
+.cena__parte.is-ativa .cena__parte-fundo {
+  fill: var(--cena-destaque);
+}
+
+.cena__parte.is-ativa .ic-p {
+  fill: var(--superficie);
+}
+
+.cena__marca circle {
+  fill: var(--tinta);
+}
+
+.cena__marca path {
+  fill: none;
+  stroke: var(--tinta-sobre);
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cena__balao {
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity var(--tempo-rapido) var(--curva),
+    transform var(--tempo-medio) var(--curva-mola);
+  pointer-events: none;
+}
+
+.cena__parte.is-ativa .cena__balao {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--tempo-camera) * 0.6);
+}
+
+.cena__balao rect,
+.cena__balao path {
+  fill: var(--superficie);
+  stroke: var(--tinta);
+  stroke-width: 1.5px;
+  stroke-linejoin: round;
+}
+
+.cena__balao text {
+  fill: var(--texto);
+  font-family: var(--fonte-titulo);
+  font-weight: var(--peso-titulo);
+  font-size: 9.5px;
+}
+
+/* Linha do tempo (barra de vídeo) */
+.cena__linha-tempo {
+  position: relative;
+  margin: var(--esp-3) var(--esp-2) 0;
+  height: var(--alvo-toque);
+}
+
+.cena__trilho {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 8px;
+  margin-top: -4px;
+  border-radius: var(--raio-pilula);
+  border: var(--traco-px) solid var(--tinta);
+  background: var(--superficie);
+  overflow: hidden;
+}
+
+.cena__preenchido {
+  height: 100%;
+  background: var(--cena-destaque);
+  transform-origin: 0 50%;
+  transition: transform var(--tempo-camera) var(--curva);
+}
+
+.cena__marcas {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.cena__marcas li {
+  display: grid;
+  place-items: center;
+}
+
+.cena__marca-botao {
+  width: var(--alvo-toque);
+  height: var(--alvo-toque);
+  margin: 0 calc(var(--alvo-toque) / -2 + 8px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.cena__marcas li:first-child .cena__marca-botao {
+  margin-left: calc(var(--alvo-toque) / -2 + 6px);
+}
+
+.cena__marca-botao::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: var(--traco-px) solid var(--tinta);
+  background: var(--superficie);
+  transition: transform var(--tempo-rapido) var(--curva-mola);
+}
+
+.cena__marca-botao.is-vista::before {
+  background: var(--tinta);
+}
+
+.cena__marca-botao.is-ativa::before {
+  background: var(--cena-destaque);
+  transform: scale(1.35);
+}
+
+.cena__marca-botao:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: -4px;
+  border-radius: 50%;
+}
+
+/* Passos de texto: cada um ocupa boa parte da tela e passa por baixo do palco */
+.cena__passos {
+  list-style: none;
+  margin: 0 auto;
+  padding: 18svh 0 8svh;
+  max-width: 34rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cena__passo {
+  margin-bottom: 42svh;
+  padding: var(--esp-4) var(--esp-5);
+  background: var(--superficie);
+  border: var(--borda-px) solid var(--borda);
+  border-radius: var(--raio-lg);
+  box-shadow: var(--sombra-1);
+  transition: transform var(--tempo-medio) var(--curva-mola);
+}
+
+.cena__passo:last-child {
+  margin-bottom: 6svh;
+}
+
+.cena__passo.is-ativa {
+  transform: rotate(-0.6deg) scale(1.02);
+  box-shadow: calc(var(--carimbo-deslocamento) * 1.5) calc(var(--carimbo-deslocamento) * 1.5) 0 var(--cena-destaque),
+    calc(var(--carimbo-deslocamento) * 1.5 + 2px) calc(var(--carimbo-deslocamento) * 1.5 + 2px) 0 var(--carimbo);
+}
+
+.cena__passo-num {
+  margin: 0 0 var(--esp-1);
+  font-family: var(--fonte-numero);
+  font-size: var(--texto-sm);
+  color: var(--texto-suave);
+  font-variant-numeric: tabular-nums;
+}
+
+.cena__passo-titulo {
+  font-size: var(--texto-lg);
+  margin-bottom: var(--esp-2);
+}
+
+.cena__passo-texto {
+  margin: 0;
+}
+
+/* Sem IntersectionObserver ou com movimento reduzido, nada fica apagado */
+@media (prefers-reduced-motion: reduce) {
+  .cena__passo.is-ativa {
+    transform: none;
+  }
+  .cena__balao {
+    transition: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .cena__svg {
+    max-height: 52svh;
+  }
+}

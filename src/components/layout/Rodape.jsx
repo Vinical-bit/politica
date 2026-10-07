@@ -45,35 +45,40 @@ function Rodape() {
           </div>
         </div>
 
-        <section className="creditos" aria-labelledby="creditos-titulo">
-          <h2 id="creditos-titulo" className="creditos__titulo">
-            Créditos
-          </h2>
-          <p className="creditos__autor">
-            <span className="creditos__papel">{AUTOR.papel}</span>
-            <strong className="creditos__nome">{AUTOR.nome}</strong>
+        <section className="creditos" aria-label="Créditos">
+          <p className="creditos__linha">
+            Desenvolvido por <strong>{AUTOR.nome}</strong>
+            {AUTOR.github && (
+              <a
+                href={`https://github.com/${AUTOR.github}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="creditos__icone"
+                aria-label={`GitHub de ${AUTOR.nome} (abre em nova aba)`}
+                title="GitHub"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8.5 7.5L4 12l4.5 4.5M15.5 7.5L20 12l-4.5 4.5M13.5 5l-3 14" />
+                </svg>
+              </a>
+            )}
+            {AUTOR.instagram && (
+              <a
+                href={`https://www.instagram.com/${AUTOR.instagram}/`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="creditos__icone"
+                aria-label={`Instagram de ${AUTOR.nome} (abre em nova aba)`}
+                title="Instagram"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 8.5A2.5 2.5 0 0 1 6.5 6H8l1.5-2h5L16 6h1.5A2.5 2.5 0 0 1 20 8.5v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 16.5z" />
+                  <circle cx="12" cy="12.5" r="3.5" />
+                </svg>
+              </a>
+            )}
           </p>
-          {(AUTOR.github || AUTOR.instagram) && (
-            <ul className="creditos__links">
-              {AUTOR.github && (
-                <li>
-                  <a href={`https://github.com/${AUTOR.github}`} target="_blank" rel="noopener noreferrer" className="creditos__link">
-                    GitHub: {AUTOR.github}
-                    <span className="visualmente-oculto"> (abre em nova aba)</span>
-                  </a>
-                </li>
-              )}
-              {AUTOR.instagram && (
-                <li>
-                  <a href={`https://www.instagram.com/${AUTOR.instagram}/`} target="_blank" rel="noopener noreferrer" className="creditos__link">
-                    Instagram: @{AUTOR.instagram}
-                    <span className="visualmente-oculto"> (abre em nova aba)</span>
-                  </a>
-                </li>
-              )}
-            </ul>
-          )}
-          <p className="creditos__producao">{PRODUCAO}</p>
+          {PRODUCAO && <p className="creditos__producao">{PRODUCAO}</p>}
         </section>
       </div>
     </footer>

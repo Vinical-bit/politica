@@ -3,9 +3,9 @@
 export const AUTOR = {
   nome: 'Vinical',
   papel: 'Ideia, direção e curadoria',
-  github: '',
-  instagram: '',
+  github: 'Vinical-bit',
+  instagram: 'vinical__',
 };
 
 // Ferramenta usada na produção (transparência com o leitor).
-export const PRODUCAO = 'Desenvolvido com o Claude, da Anthropic, a partir das ideias e da direção do autor.';
+export const PRODUCAO = 'Feito com o Claude, da Anthropic.'; // deixe '' para esconder

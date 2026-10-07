@@ -134,6 +134,7 @@ Teste de uma estética "tipo vídeo" em cartoon editorial. Se não ficar boa, ba
 - **Troca de passo:** no celular, o passo ativo é medido logo abaixo do palco (antes, a linha caía atrás dele).
 - **Curto × longo prazo:** no "longo prazo" as barras ficam vermelhas (`--cena-alerta`). É um vermelho-alaranjado, diferente do vermelho da Defesa, mas ainda é próximo; ver a nota na conversa.
 - **Tarifa:** as moedas correm sem parar pela rota, como um fluxo, e há um botão "Pausar o fluxo" (WCAG 2.2.2). Com "reduzir movimento", as moedas ficam paradas.
+- **Sentido do dinheiro na tarifa (corrigido):** as moedas agora saem da China (quem compra) para quem vende: os EUA antes da tarifa e o Brasil depois. Antes elas iam no sentido contrário nos dois estados.
 - **Dólar (p11):** entrou o gráfico com a média anual de 2018 a 2026, com faixas "Bolsonaro" e "Lula 3". A fonte é a série 3698 do Banco Central. O cartão do dólar, que estava pendente (foto de um dia), virou média anual verificada: R$ 5,16 em 2022 e R$ 5,15 em 2026 (jan. a ago.). Os pendentes caíram de 27 para 26.
 - **Gráficos de linha:** passaram a aceitar `faixas` (períodos) e `mostrarValores` (valor fixo em cada ponto).
 

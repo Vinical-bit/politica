@@ -72,7 +72,8 @@ function MapaTarifa({ grafico }) {
             <g key={`${estado}-${i}`} className="tarifa__moeda" opacity="0">
               <circle r="9" />
               <text y="4" textAnchor="middle">$</text>
-              <animateMotion dur={`${DUR}s`} begin={inicio} repeatCount="indefinite" path={caminho} />
+              {/* O dinheiro sai de quem compra (China) e vai para quem vende: a rota é percorrida de trás para frente */}
+              <animateMotion dur={`${DUR}s`} begin={inicio} repeatCount="indefinite" path={caminho} keyPoints="1;0" keyTimes="0;1" calcMode="linear" />
               <animate attributeName="opacity" dur={`${DUR}s`} begin={inicio} repeatCount="indefinite" values="0;1;1;0" keyTimes="0;0.12;0.85;1" />
             </g>
           );
@@ -99,7 +100,7 @@ function MapaTarifa({ grafico }) {
         {rota.texto}
       </p>
       <p className="grafico__nota">
-        Esquema simplificado, sem escala nem valores.
+        Esquema simplificado, sem escala nem valores. As moedas mostram o dinheiro saindo de quem compra (a China) para quem vende.
       </p>
     </figure>
   );
